@@ -16,16 +16,20 @@ import {
   FolderPlus,
   CheckSquare,
   Flag,
-  UserPlus
+  UserPlus,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { Breadcrumbs } from './Breadcrumbs';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
+import { useTheme } from '../../context/ThemeContext';
 import { RoleBadge } from '../common/Badge';
 
 export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, onOpenNewTask }) {
   const { currentUser, switchRole, logout, isEmployee } = useAuth();
   const { notifications, markNotificationRead, markAllNotificationsRead } = useData();
+  const { isDark, toggleTheme } = useTheme();
   const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [quickCreateOpen, setQuickCreateOpen] = useState(false);
@@ -194,6 +198,20 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
           </button>
         </div>
 
+        {/* Dark / Light Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg text-[#777F79] hover:text-[#242B27] hover:bg-[#F6F6F2] transition-colors cursor-pointer group"
+          aria-label={isDark ? "Switch to Architectural Light Mode" : "Switch to Slate Dark Mode"}
+          title={isDark ? "Switch to Light Theme (Shift+D)" : "Switch to Dark Theme (Shift+D)"}
+        >
+          {isDark ? (
+            <Sun className="w-4 h-4 text-[#C29567] transition-transform duration-300 group-hover:rotate-45" />
+          ) : (
+            <Moon className="w-4 h-4 text-[#657A6A] transition-transform duration-300 group-hover:-rotate-12" />
+          )}
+        </button>
+
         {/* Notifications Bell Dropdown */}
         <div className="relative" ref={notifRef}>
           <button
@@ -330,6 +348,16 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
                     <span>Project Governance</span>
                   </button>
                 )}
+                <button
+                  onClick={toggleTheme}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 text-xs text-[#242B27] hover:bg-[#F6F6F2] rounded-md transition-colors cursor-pointer"
+                >
+                  <span className="flex items-center gap-2.5">
+                    {isDark ? <Sun className="w-3.5 h-3.5 text-[#C29567]" /> : <Moon className="w-3.5 h-3.5 text-[#657A6A]" />}
+                    <span>{isDark ? 'Light Theme' : 'Dark Theme'}</span>
+                  </span>
+                  <span className="text-[10px] text-[#777F79] font-mono">Shift+D</span>
+                </button>
               </div>
 
               <div className="pt-1 border-t border-[#E7E9E3]">

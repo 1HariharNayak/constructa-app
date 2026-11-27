@@ -1,7 +1,10 @@
 import React from 'react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
+import { useTheme } from '../../context/ThemeContext';
 
 export function MonthlyTaskChart() {
+  const { isDark } = useTheme();
+
   const data = [
     { month: 'Jun', completed: 24, planned: 30 },
     { month: 'Jul', completed: 32, planned: 35 },
@@ -10,6 +13,10 @@ export function MonthlyTaskChart() {
     { month: 'Oct', completed: 42, planned: 45 },
     { month: 'Nov', completed: 35, planned: 38 },
   ];
+
+  const gridStroke = isDark ? '#2A332E' : '#E7E9E3';
+  const axisColor = isDark ? '#9BA29C' : '#777F79';
+  const plannedColor = isDark ? '#2C3630' : '#E7E9E3';
 
   return (
     <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
@@ -27,17 +34,17 @@ export function MonthlyTaskChart() {
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E7E9E3" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={gridStroke} />
             <XAxis
               dataKey="month"
-              axisLine={{ stroke: '#E7E9E3' }}
+              axisLine={{ stroke: gridStroke }}
               tickLine={false}
-              tick={{ fill: '#777F79', fontSize: 11 }}
+              tick={{ fill: axisColor, fontSize: 11 }}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: '#777F79', fontSize: 11 }}
+              tick={{ fill: axisColor, fontSize: 11 }}
             />
             <Tooltip
               content={({ active, payload, label }) => {
@@ -68,7 +75,7 @@ export function MonthlyTaskChart() {
               wrapperStyle={{ paddingBottom: '12px', fontSize: '11px' }}
             />
             <Bar dataKey="completed" name="Completed" fill="#5D8068" radius={[4, 4, 0, 0]} maxBarSize={28} />
-            <Bar dataKey="planned" name="Planned" fill="#E7E9E3" radius={[4, 4, 0, 0]} maxBarSize={28} />
+            <Bar dataKey="planned" name="Planned" fill={plannedColor} radius={[4, 4, 0, 0]} maxBarSize={28} />
           </BarChart>
         </ResponsiveContainer>
       </div>

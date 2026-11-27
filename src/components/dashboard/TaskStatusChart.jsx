@@ -1,7 +1,9 @@
 import React from 'react';
 import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts';
+import { useTheme } from '../../context/ThemeContext';
 
 export function TaskStatusChart({ tasks }) {
+  const { isDark } = useTheme();
   const counts = {
     Completed: tasks.filter(t => t.status === 'Completed').length,
     'In Progress': tasks.filter(t => t.status === 'In Progress').length,
@@ -69,7 +71,12 @@ export function TaskStatusChart({ tasks }) {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} stroke="#FFFFFF" strokeWidth={2} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={entry.color}
+                  stroke={isDark ? '#1C221F' : '#FFFFFF'}
+                  strokeWidth={2}
+                />
               ))}
             </Pie>
           </PieChart>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../context/DataContext';
+import { useTheme } from '../context/ThemeContext';
 import {
   Download,
   Printer,
@@ -31,9 +32,13 @@ import {
 
 export function Reports() {
   const { projects, tasks, milestones, employees } = useData();
+  const { isDark } = useTheme();
 
   const [selectedProject, setSelectedProject] = useState('All');
   const [selectedRange, setSelectedRange] = useState('Quarter 4 (Current)');
+
+  const chartGrid = isDark ? '#2A332E' : '#E7E9E3';
+  const chartText = isDark ? '#9BA29C' : '#777F79';
 
   // Filter tasks if project selected
   const displayProjects = selectedProject === 'All'
@@ -201,9 +206,9 @@ export function Reports() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={projectComparisonData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E7E9E3" />
-                <XAxis dataKey="name" tick={{ fill: '#777F79', fontSize: 11 }} />
-                <YAxis domain={[0, 100]} tick={{ fill: '#777F79', fontSize: 11 }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartGrid} />
+                <XAxis dataKey="name" tick={{ fill: chartText, fontSize: 11 }} />
+                <YAxis domain={[0, 100]} tick={{ fill: chartText, fontSize: 11 }} />
                 <Tooltip
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
@@ -245,9 +250,9 @@ export function Reports() {
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={employeePerformanceData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E7E9E3" />
-                <XAxis dataKey="name" tick={{ fill: '#777F79', fontSize: 11 }} />
-                <YAxis tick={{ fill: '#777F79', fontSize: 11 }} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={chartGrid} />
+                <XAxis dataKey="name" tick={{ fill: chartText, fontSize: 11 }} />
+                <YAxis tick={{ fill: chartText, fontSize: 11 }} />
                 <Tooltip
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {

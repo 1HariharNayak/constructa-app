@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
@@ -26,6 +28,24 @@
   --color-constructa-info: #718B9A;
 }
 
+:root {
+  color-scheme: light;
+  --app-bg: #F6F6F2;
+  --app-card: #FFFFFF;
+  --app-text: #242B27;
+  --app-muted: #777F79;
+  --app-border: #E7E9E3;
+}
+
+html.dark {
+  color-scheme: dark;
+  --app-bg: #141816;
+  --app-card: #1C221F;
+  --app-text: #EDEDEA;
+  --app-muted: #9BA29C;
+  --app-border: #2A332E;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: #F6F6F2;
@@ -33,6 +53,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+html.dark body {
+  background-color: #141816;
+  color: #EDEDEA;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
@@ -56,6 +82,16 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background: #B9BEB3;
 }
 
+html.dark ::-webkit-scrollbar-track {
+  background: #141816;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2D3731;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3D4A43;
+}
+
 /* Enterprise Card Elevation */
 .constructa-card {
   background-color: #FFFFFF;
@@ -71,4 +107,204 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px 0 rgba(36, 43, 39, 0.05), 0 2px 4px -1px rgba(36, 43, 39, 0.03);
   border-color: #D3D8CE;
+}
+
+html.dark .constructa-card {
+  background-color: #1C221F;
+  border-color: #2A332E;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .constructa-card-hover:hover {
+  border-color: #3D4C44;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   ARCHITECTURAL DARK THEME OVERRIDES
+   Rich charcoal slate, deep bronze highlights, illuminated forest green accents
+   ========================================================================== */
+
+/* Surfaces */
+html.dark .bg-white {
+  background-color: #1C221F !important;
+}
+
+html.dark header.bg-white {
+  background-color: #171C1A !important;
+  border-color: #2A332E !important;
+}
+
+html.dark .bg-\[\#F6F6F2\] {
+  background-color: #141816 !important;
+}
+
+/* Nested containers inside cards */
+html.dark .bg-white .bg-\[\#F6F6F2\],
+html.dark div.rounded-xl .bg-\[\#F6F6F2\],
+html.dark div.rounded-lg .bg-\[\#F6F6F2\] {
+  background-color: #232B27 !important;
+}
+
+html.dark .bg-\[\#FAF9F6\] {
+  background-color: #212824 !important;
+}
+
+html.dark .bg-\[\#F0F2EC\],
+html.dark .bg-\[\#EBF0EC\] {
+  background-color: #232C28 !important;
+}
+
+html.dark .bg-\[\#F3ECE5\],
+html.dark .bg-\[\#FBF4EC\] {
+  background-color: #2D2319 !important;
+}
+
+/* Text */
+html.dark .text-\[\#242B27\],
+html.dark .text-\[\#252821\] {
+  color: #EDEDEA !important;
+}
+
+html.dark .text-\[\#777F79\],
+html.dark .text-\[\#8E9690\],
+html.dark .text-\[\#77786F\] {
+  color: #9BA29C !important;
+}
+
+/* Borders */
+html.dark .border-\[\#E7E9E3\],
+html.dark .border-\[\#E9E7DF\] {
+  border-color: #2A332E !important;
+}
+
+html.dark .border-\[\#F0F2EC\] {
+  border-color: #242D28 !important;
+}
+
+html.dark .border-\[\#D5D8CF\],
+html.dark .border-\[\#D7DAD2\] {
+  border-color: #38453E !important;
+}
+
+html.dark .divide-\[\#E7E9E3\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #2A332E !important;
+}
+
+/* Interactive & Forms */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #171D1A !important;
+  color: #EDEDEA !important;
+  border-color: #2C3631 !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  background-color: #1B221F !important;
+  border-color: #C29567 !important;
+  box-shadow: 0 0 0 1px #C29567 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #6A736E !important;
+}
+
+/* Buttons in dark mode */
+html.dark button.bg-\[\#F6F6F2\] {
+  background-color: #222926 !important;
+  border-color: #2E3832 !important;
+  color: #EDEDEA !important;
+}
+
+html.dark button.bg-\[\#F6F6F2\]:hover {
+  background-color: #2A332F !important;
+  border-color: #3D4A42 !important;
+}
+
+/* Dropdowns & Popovers */
+html.dark .shadow-xs,
+html.dark .shadow-sm {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+html.dark .shadow-md,
+html.dark .shadow-lg,
+html.dark .shadow-xl,
+html.dark .shadow-2xl {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Tables */
+html.dark tr.hover\:bg-\[\#FAF9F6\]:hover,
+html.dark tr.hover\:bg-\[\#F6F6F2\]:hover {
+  background-color: #232B27 !important;
+}
+
+html.dark th.bg-\[\#FAF9F6\],
+html.dark th.bg-\[\#F6F6F2\] {
+  background-color: #1A201D !important;
+  color: #9BA29C !important;
+}
+
+/* Dark Sidebar fine-tuning */
+html.dark aside,
+html.dark .bg-\[\#202824\] {
+  background-color: #111513 !important;
+  border-color: #1E2521 !important;
+}
+
+html.dark aside .border-\[\#2A342F\] {
+  border-color: #1C231F !important;
+}
+
+html.dark aside .hover\:bg-\[\#26312C\]:hover {
+  background-color: #181E1B !important;
+}
+
+html.dark aside .bg-\[\#2C3832\] {
+  background-color: #1E2622 !important;
+}
+
+/* Badges and status pills illumination */
+html.dark .bg-\[\#5D8068\]\/10,
+html.dark .bg-emerald-50 {
+  background-color: rgba(93, 128, 104, 0.16) !important;
+}
+html.dark .text-\[\#5D8068\] {
+  color: #7BB58C !important;
+}
+
+html.dark .bg-\[\#A77B50\]\/10,
+html.dark .bg-amber-50 {
+  background-color: rgba(167, 123, 80, 0.16) !important;
+}
+html.dark .text-\[\#A77B50\] {
+  color: #D3A77C !important;
+}
+
+html.dark .bg-\[\#C66C62\]\/10,
+html.dark .bg-red-50 {
+  background-color: rgba(198, 108, 98, 0.16) !important;
+}
+html.dark .text-\[\#C66C62\],
+html.dark .text-\[\#C96B5D\] {
+  color: #E68A80 !important;
+}
+
+html.dark .bg-\[\#718B9A\]\/10,
+html.dark .bg-blue-50 {
+  background-color: rgba(113, 139, 154, 0.16) !important;
+}
+html.dark .text-\[\#718B9A\] {
+  color: #92B4C8 !important;
+}
+
+/* Modal and Drawer overlays */
+html.dark .bg-black\/50,
+html.dark .bg-\[\#202824\]\/60 {
+  background-color: rgba(10, 13, 11, 0.75) !important;
 }

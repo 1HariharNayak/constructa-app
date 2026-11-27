@@ -18,15 +18,19 @@ import {
   ShieldCheck,
   RefreshCw,
   Building2,
-  ChevronDown
+  ChevronDown,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useData } from '../../context/DataContext';
+import { useTheme } from '../../context/ThemeContext';
 import { RoleBadge } from '../common/Badge';
 
 export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
   const { currentUser, isEmployee, switchRole, logout } = useAuth();
   const { notifications, resetToDefaults } = useData();
+  const { isDark, toggleTheme } = useTheme();
   const [roleMenuOpen, setRoleMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -203,17 +207,25 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
 
       {/* Bottom Utility & Profile Section */}
       <div className="p-2.5 border-t border-[#2A342F] space-y-2 bg-[#1B221E]/60">
-        {/* Help & Reset Data triggers */}
+        {/* Help & Reset Data & Theme triggers */}
         <div className="flex items-center justify-between gap-1">
           <button
             onClick={onOpenHelp}
-            className={`flex items-center gap-2 p-1.5 rounded-lg text-xs font-medium text-[#8E9690] hover:text-[#F6F6F2] hover:bg-[#2A342F] transition-colors w-full cursor-pointer ${
+            className={`flex items-center gap-2 p-1.5 rounded-lg text-xs font-medium text-[#8E9690] hover:text-[#F6F6F2] hover:bg-[#2A342F] transition-colors flex-1 cursor-pointer ${
               collapsed ? 'justify-center' : ''
             }`}
             title="System Documentation & Feature Tour"
           >
             <HelpCircle className="w-3.5 h-3.5 shrink-0 text-[#8E9690]" />
-            {!collapsed && <span>Help & Docs</span>}
+            {!collapsed && <span>Help</span>}
+          </button>
+
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-lg text-xs text-[#8E9690] hover:text-[#A77B50] hover:bg-[#2A342F] transition-colors cursor-pointer"
+            title={isDark ? "Switch to Light Theme" : "Switch to Dark Theme"}
+          >
+            {isDark ? <Sun className="w-3.5 h-3.5 text-[#C29567]" /> : <Moon className="w-3.5 h-3.5 text-[#8E9690]" />}
           </button>
 
           {!collapsed && (

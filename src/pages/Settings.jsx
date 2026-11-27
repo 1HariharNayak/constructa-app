@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { useToast } from '../context/ToastContext';
+import { useTheme } from '../context/ThemeContext';
 import { Button } from '../components/common/Button';
 import {
   Building2,
@@ -11,13 +12,17 @@ import {
   RefreshCw,
   CheckCircle2,
   Lock,
-  Layers
+  Layers,
+  Sun,
+  Moon,
+  Monitor
 } from 'lucide-react';
 
 export function Settings() {
   const { currentUser, isSuperAdmin } = useAuth();
   const { resetToDefaults } = useData();
   const { showToast } = useToast();
+  const { theme, setTheme, isDark } = useTheme();
 
   const [companyName, setCompanyName] = useState('CONSTRUCTA Project Management & Architectural Design');
   const [licenseNumber, setLicenseNumber] = useState('GC-CA-9481028-A');
@@ -178,6 +183,79 @@ export function Settings() {
                   className="w-4 h-4 accent-[#A77B50] cursor-pointer"
                 />
               </label>
+            </div>
+          </div>
+
+          {/* Interface Appearance & Theme Section */}
+          <div className="bg-white rounded-xl border border-[#E7E9E3] p-6 shadow-xs">
+            <h3 className="text-xs font-bold text-[#777F79] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Sun className="w-4 h-4 text-[#A77B50]" />
+              Interface Theme & Design System
+            </h3>
+            <p className="text-xs text-[#777F79] mb-4">
+              Select between daytime architectural paper aesthetic or deep blueprint slate mode. Press <kbd className="px-1.5 py-0.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded text-[10px] font-mono text-[#242B27]">Shift+D</kbd> anywhere to quickly toggle.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setTheme('light');
+                  showToast('Switched to Architectural Light theme');
+                }}
+                className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                  theme === 'light'
+                    ? 'border-[#A77B50] bg-[#F3ECE5]/40 shadow-xs ring-1 ring-[#A77B50]'
+                    : 'border-[#E7E9E3] bg-[#F6F6F2] hover:border-[#D5D8CF]'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Sun className={`w-5 h-5 ${theme === 'light' ? 'text-[#A77B50]' : 'text-[#777F79]'}`} />
+                  {theme === 'light' && <span className="w-2 h-2 rounded-full bg-[#A77B50]" />}
+                </div>
+                <div className="font-bold text-xs text-[#242B27]">Architectural Light</div>
+                <div className="text-[11px] text-[#777F79] mt-0.5">Warm paper `#F6F6F2` canvas</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setTheme('dark');
+                  showToast('Switched to Slate Blueprint Dark theme');
+                }}
+                className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                  theme === 'dark'
+                    ? 'border-[#A77B50] bg-[#2A342F] shadow-xs ring-1 ring-[#A77B50]'
+                    : 'border-[#E7E9E3] bg-[#F6F6F2] hover:border-[#D5D8CF]'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Moon className={`w-5 h-5 ${theme === 'dark' ? 'text-[#C29567]' : 'text-[#777F79]'}`} />
+                  {theme === 'dark' && <span className="w-2 h-2 rounded-full bg-[#C29567]" />}
+                </div>
+                <div className={`font-bold text-xs ${theme === 'dark' ? 'text-white' : 'text-[#242B27]'}`}>Blueprint Dark</div>
+                <div className={`text-[11px] ${theme === 'dark' ? 'text-[#9BA29C]' : 'text-[#777F79]'} mt-0.5`}>Deep graphite `#141816`</div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setTheme('system');
+                  showToast('Theme set to follow system OS preference');
+                }}
+                className={`p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
+                  theme === 'system'
+                    ? 'border-[#A77B50] bg-[#F3ECE5]/40 shadow-xs ring-1 ring-[#A77B50]'
+                    : 'border-[#E7E9E3] bg-[#F6F6F2] hover:border-[#D5D8CF]'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <Monitor className={`w-5 h-5 ${theme === 'system' ? 'text-[#657A6A]' : 'text-[#777F79]'}`} />
+                  {theme === 'system' && <span className="w-2 h-2 rounded-full bg-[#657A6A]" />}
+                </div>
+                <div className="font-bold text-xs text-[#242B27]">System Auto</div>
+                <div className="text-[11px] text-[#777F79] mt-0.5">Syncs with operating system</div>
+              </button>
             </div>
           </div>
         </div>
