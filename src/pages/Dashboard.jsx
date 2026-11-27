@@ -13,7 +13,6 @@ import {
   ArrowRight,
   TrendingUp,
   Building2,
-  Calendar,
   Filter
 } from 'lucide-react';
 import { StatCard } from '../components/dashboard/StatCard';
@@ -57,7 +56,6 @@ export function Dashboard() {
   const [taskModalOpen, setTaskModalOpen] = useState(false);
   const [projectModalOpen, setProjectModalOpen] = useState(false);
   const [selectedPeriod, setSelectedPeriod] = useState('This Quarter');
-  const [selectedDate, setSelectedDate] = useState('2026-11-26');
 
   // Stats calculation
   const totalProjects = projects.length || 28;
@@ -120,18 +118,7 @@ export function Dashboard() {
         </div>
 
         {/* Cohesive Right Toolbar */}
-        <div className="flex items-center gap-2.5 flex-wrap lg:flex-nowrap">
-          {/* Date Selector */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] text-xs text-[#242B27] dark:text-[#EDEDEA]">
-            <Calendar className="w-3.5 h-3.5 text-[#A77B50]" />
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
-              className="bg-transparent border-none text-xs font-mono font-medium text-[#242B27] dark:text-[#EDEDEA] focus:outline-none cursor-pointer"
-            />
-          </div>
-
+        <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
           {/* Reporting Period Filter */}
           <div className="flex items-center gap-1 bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] rounded-lg p-0.5 text-xs">
             {['This Month', 'This Quarter', 'YTD'].map((period) => (

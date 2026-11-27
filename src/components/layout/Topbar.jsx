@@ -12,11 +12,6 @@ import {
   Settings,
   LogOut,
   Shield,
-  Plus,
-  FolderPlus,
-  CheckSquare,
-  Flag,
-  UserPlus,
   Sun,
   Moon
 } from 'lucide-react';
@@ -32,12 +27,10 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
   const { isDark, toggleTheme } = useTheme();
   const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const [quickCreateOpen, setQuickCreateOpen] = useState(false);
   const navigate = useNavigate();
 
   const notifRef = useRef(null);
   const userRef = useRef(null);
-  const quickRef = useRef(null);
 
   const unreadNotifications = notifications.filter(n => !n.read);
   const recentNotifications = notifications.slice(0, 5);
@@ -51,20 +44,10 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
       if (userRef.current && !userRef.current.contains(e.target)) {
         setUserDropdownOpen(false);
       }
-      if (quickRef.current && !quickRef.current.contains(e.target)) {
-        setQuickCreateOpen(false);
-      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  const todayStr = new Intl.DateTimeFormat('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  }).format(new Date('2026-11-26'));
 
   return (
     <header className="h-16 bg-white border-b border-[#E7E9E3] px-4 sm:px-6 flex items-center justify-between z-20 shrink-0 select-none">
@@ -97,63 +80,6 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
             ⌘K
           </kbd>
         </button>
-
-        {/* Quick-Create Action Dropdown */}
-        <div className="relative" ref={quickRef}>
-          <button
-            onClick={() => setQuickCreateOpen(!quickCreateOpen)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#A77B50] hover:bg-[#926A42] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">New</span>
-            <ChevronDown className="w-3 h-3 text-white/80" />
-          </button>
-
-          {quickCreateOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1C221F] border border-[#E7E9E3] dark:border-[#2A332E] rounded-xl shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95">
-              <button
-                onClick={() => {
-                  setQuickCreateOpen(false);
-                  navigate('/projects?action=new');
-                }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#A77B50] rounded-lg transition-colors text-left cursor-pointer"
-              >
-                <FolderPlus className="w-4 h-4 text-[#A77B50]" />
-                <span>New Project</span>
-              </button>
-              <button
-                onClick={() => {
-                  setQuickCreateOpen(false);
-                  navigate('/tasks?action=new');
-                }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#657A6A] rounded-lg transition-colors text-left cursor-pointer"
-              >
-                <CheckSquare className="w-4 h-4 text-[#657A6A]" />
-                <span>New Work Order</span>
-              </button>
-              <button
-                onClick={() => {
-                  setQuickCreateOpen(false);
-                  navigate('/calendar');
-                }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#C28D4E] rounded-lg transition-colors text-left cursor-pointer"
-              >
-                <Flag className="w-4 h-4 text-[#C28D4E]" />
-                <span>Schedule Milestone</span>
-              </button>
-              <button
-                onClick={() => {
-                  setQuickCreateOpen(false);
-                  navigate('/team');
-                }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#718B9A] rounded-lg transition-colors text-left cursor-pointer"
-              >
-                <UserPlus className="w-4 h-4 text-[#718B9A]" />
-                <span>Add Team Member</span>
-              </button>
-            </div>
-          )}
-        </div>
 
         {/* Demo Role Switcher Tabs */}
         <div className="hidden sm:flex items-center bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] rounded-lg p-0.5 text-xs font-medium">
