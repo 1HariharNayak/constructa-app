@@ -114,12 +114,12 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
 
   return (
     <aside
-      className={`relative flex flex-col bg-[#202824] text-[#E7E9E3] transition-all duration-200 select-none z-30 shrink-0 border-r border-[#2A342F] ${
+      className={`relative flex flex-col h-screen bg-[#202824] text-[#E7E9E3] transition-all duration-200 select-none z-30 shrink-0 border-r border-[#2A342F] ${
         collapsed ? 'w-18' : 'w-64'
       }`}
     >
       {/* Brand Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-[#2A342F]">
+      <div className="h-16 flex items-center justify-between px-4 border-b border-[#2A342F] shrink-0">
         <div className="flex items-center gap-3 overflow-hidden">
           {/* Architectural Emblem in Warm Bronze */}
           <div className="w-9 h-9 rounded-lg bg-[#2A352F] border border-[#A77B50]/30 text-[#A77B50] flex items-center justify-center shrink-0 shadow-xs">
@@ -147,8 +147,8 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
         </button>
       </div>
 
-      {/* Navigation Sections */}
-      <div className="flex-1 overflow-y-auto py-3 px-2 space-y-4 custom-scrollbar">
+      {/* Navigation Sections with Scrollable Area and Bottom Padding */}
+      <div className="flex-1 min-h-0 overflow-y-auto py-3 px-2 space-y-4 custom-scrollbar">
         {navGroups.map((group) => (
           <div key={group.group} className="space-y-0.5">
             {!collapsed && (
@@ -171,11 +171,14 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
                   to={item.to}
                   className={`group relative flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 ${
                     isActive
-                      ? 'bg-[#A77B50]/15 text-[#F6F6F2] font-semibold border-l-2 border-[#A77B50]'
-                      : 'text-[#8E9690] hover:bg-[#2A342F] hover:text-[#F6F6F2]'
+                      ? 'bg-[#2A352F] text-[#F6F6F2] font-semibold'
+                      : 'text-[#8E9690] hover:bg-[#26302A] hover:text-[#F6F6F2]'
                   } ${collapsed ? 'justify-center' : ''}`}
                   title={collapsed ? item.label : undefined}
                 >
+                  {isActive && (
+                    <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-[#A77B50] rounded-r-full" />
+                  )}
                   <Icon
                     className={`w-4 h-4 shrink-0 transition-colors ${
                       isActive ? 'text-[#A77B50]' : 'text-[#777F79] group-hover:text-[#F6F6F2]'
@@ -203,7 +206,7 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
       </div>
 
       {/* Bottom Utility & Profile Section */}
-      <div className="p-2.5 border-t border-[#2A342F] space-y-2 bg-[#1B221E]/60">
+      <div className="p-2.5 border-t border-[#2A342F] space-y-2 bg-[#1B221E] shrink-0">
         {/* Help & Reset Data & Theme triggers */}
         <div className="flex items-center justify-between gap-1">
           <button

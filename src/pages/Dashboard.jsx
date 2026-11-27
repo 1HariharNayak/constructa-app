@@ -102,46 +102,46 @@ export function Dashboard() {
 
   return (
     <div className="space-y-6">
-      {/* Dashboard Welcome Header with Date & Reporting Period Selectors */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      {/* Dashboard Welcome Header */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-[#1C221F] rounded-xl border border-[#E7E9E3] dark:border-[#2A332E] shadow-xs">
         <div>
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-2 mb-1.5">
             <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
             <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
               Executive Portfolio Overview
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] dark:text-[#EDEDEA] font-heading tracking-tight">
             Good morning, {currentUser?.name?.split(' ')[0] || 'Anant'}
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-[#777F79] dark:text-[#9BA29C] mt-1">
             Here's what's happening across your capital construction projects today.
           </p>
         </div>
 
-        {/* Filters and Action Buttons */}
-        <div className="flex items-center gap-2.5 flex-wrap">
+        {/* Cohesive Right Toolbar */}
+        <div className="flex items-center gap-2.5 flex-wrap lg:flex-nowrap">
           {/* Date Selector */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F6F6F2] border border-[#E7E9E3] text-xs text-[#242B27]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] text-xs text-[#242B27] dark:text-[#EDEDEA]">
             <Calendar className="w-3.5 h-3.5 text-[#A77B50]" />
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="bg-transparent border-none text-xs font-mono font-medium text-[#242B27] focus:outline-none cursor-pointer"
+              className="bg-transparent border-none text-xs font-mono font-medium text-[#242B27] dark:text-[#EDEDEA] focus:outline-none cursor-pointer"
             />
           </div>
 
           {/* Reporting Period Filter */}
-          <div className="flex items-center gap-1 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg p-0.5">
+          <div className="flex items-center gap-1 bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] rounded-lg p-0.5 text-xs">
             {['This Month', 'This Quarter', 'YTD'].map((period) => (
               <button
                 key={period}
                 onClick={() => setSelectedPeriod(period)}
                 className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   selectedPeriod === period
-                    ? 'bg-white text-[#242B27] shadow-xs border border-[#E7E9E3]'
-                    : 'text-[#777F79] hover:text-[#242B27]'
+                    ? 'bg-white dark:bg-[#1C221F] text-[#242B27] dark:text-[#EDEDEA] shadow-xs'
+                    : 'text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA]'
                 }`}
               >
                 {period}
@@ -149,17 +149,7 @@ export function Dashboard() {
             ))}
           </div>
 
-          {/* Action triggers */}
-          {canCreateTask && (
-            <Button
-              variant="outline"
-              size="sm"
-              icon={Plus}
-              onClick={() => setTaskModalOpen(true)}
-            >
-              New Task
-            </Button>
-          )}
+          {/* Clean Primary Action */}
           {canCreateProject && (
             <Button
               variant="primary"
@@ -173,12 +163,12 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* 6 Compact KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+      {/* 6 Clean KPI Cards - No Truncation, Balanced Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5">
         <StatCard
           title="Total Projects"
           value={totalProjects}
-          description="Capital developments"
+          description="Active & archived"
           trend="+2 this qtr"
           trendPositive={true}
           icon={FolderKanban}
@@ -186,20 +176,20 @@ export function Dashboard() {
           onClick={() => navigate('/projects')}
         />
         <StatCard
-          title="Active Projects"
+          title="Active Sites"
           value={activeProjects}
           description="In structural execution"
-          trend="8 on schedule"
+          trend="8 on track"
           trendPositive={true}
           icon={Clock}
           variant="bronze"
           onClick={() => navigate('/projects?status=In Progress')}
         />
         <StatCard
-          title="Completed Projects"
+          title="Completed"
           value={completedProjects}
-          description="Certified & handed over"
-          trend="100% compliant"
+          description="Certified delivery"
+          trend="100% code"
           trendPositive={true}
           icon={CheckCircle2}
           variant="success"
@@ -208,8 +198,8 @@ export function Dashboard() {
         <StatCard
           title="On Hold"
           value={onHoldProjects}
-          description="Awaiting permits / delay"
-          trend="Requires action"
+          description="Permit clearance"
+          trend="Action required"
           trendPositive={false}
           icon={AlertTriangle}
           variant="warning"
@@ -218,7 +208,7 @@ export function Dashboard() {
         <StatCard
           title="Total Tasks"
           value={totalTasks}
-          description="Field work orders"
+          description="Active deliverables"
           trend="92% velocity"
           trendPositive={true}
           icon={CheckSquare}
@@ -226,10 +216,10 @@ export function Dashboard() {
           onClick={() => navigate('/tasks')}
         />
         <StatCard
-          title="Overdue Tasks"
+          title="Overdue"
           value={overdueTasks}
-          description="Inspection delayed"
-          trend="+3 critical path"
+          description="Critical path delay"
+          trend="Immediate"
           trendPositive={false}
           icon={AlertCircle}
           variant="danger"

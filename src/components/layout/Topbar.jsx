@@ -84,31 +84,25 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
       </div>
 
       {/* Right Controls */}
-      <div className="flex items-center gap-2 sm:gap-3.5">
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Global Search shortcut button */}
         <button
           onClick={onOpenSearch}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F6F6F2] border border-[#E7E9E3] text-xs text-[#777F79] hover:text-[#242B27] hover:border-[#D5D8CF] shadow-xs transition-all cursor-pointer"
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] text-xs text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA] hover:border-[#D5D8CF] shadow-xs transition-all cursor-pointer"
           title="Search projects, tasks, or drawings (Ctrl+K)"
         >
           <Search className="w-3.5 h-3.5 text-[#657A6A]" />
           <span className="hidden md:inline font-medium">Search...</span>
-          <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white text-[#777F79] border border-[#E7E9E3] rounded shadow-2xs">
+          <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white dark:bg-[#1C221F] text-[#777F79] dark:text-[#9BA29C] border border-[#E7E9E3] dark:border-[#2A332E] rounded shadow-2xs">
             ⌘K
           </kbd>
         </button>
-
-        {/* Date Display */}
-        <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F6F6F2] text-xs font-medium text-[#777F79] border border-[#E7E9E3]">
-          <Calendar className="w-3.5 h-3.5 text-[#A77B50]" />
-          <span>{todayStr}</span>
-        </div>
 
         {/* Quick-Create Action Dropdown */}
         <div className="relative" ref={quickRef}>
           <button
             onClick={() => setQuickCreateOpen(!quickCreateOpen)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#A77B50] text-white hover:bg-[#956C43] text-xs font-semibold shadow-xs transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#A77B50] hover:bg-[#926A42] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">New</span>
@@ -116,13 +110,13 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
           </button>
 
           {quickCreateOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-[#E7E9E3] rounded-xl shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95">
+            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1C221F] border border-[#E7E9E3] dark:border-[#2A332E] rounded-xl shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95">
               <button
                 onClick={() => {
                   setQuickCreateOpen(false);
                   navigate('/projects?action=new');
                 }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] hover:bg-[#F6F6F2] hover:text-[#A77B50] rounded-lg transition-colors text-left"
+                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#A77B50] rounded-lg transition-colors text-left cursor-pointer"
               >
                 <FolderPlus className="w-4 h-4 text-[#A77B50]" />
                 <span>New Project</span>
@@ -132,7 +126,7 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
                   setQuickCreateOpen(false);
                   navigate('/tasks?action=new');
                 }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] hover:bg-[#F6F6F2] hover:text-[#657A6A] rounded-lg transition-colors text-left"
+                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#657A6A] rounded-lg transition-colors text-left cursor-pointer"
               >
                 <CheckSquare className="w-4 h-4 text-[#657A6A]" />
                 <span>New Work Order</span>
@@ -140,19 +134,19 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
               <button
                 onClick={() => {
                   setQuickCreateOpen(false);
-                  navigate('/milestones');
+                  navigate('/calendar');
                 }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] hover:bg-[#F6F6F2] hover:text-[#C28D4E] rounded-lg transition-colors text-left"
+                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#C28D4E] rounded-lg transition-colors text-left cursor-pointer"
               >
                 <Flag className="w-4 h-4 text-[#C28D4E]" />
-                <span>New Milestone</span>
+                <span>Schedule Milestone</span>
               </button>
               <button
                 onClick={() => {
                   setQuickCreateOpen(false);
                   navigate('/team');
                 }}
-                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] hover:bg-[#F6F6F2] hover:text-[#718B9A] rounded-lg transition-colors text-left"
+                className="w-full flex items-center gap-2.5 px-2.5 py-2 text-xs font-medium text-[#242B27] dark:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] hover:text-[#718B9A] rounded-lg transition-colors text-left cursor-pointer"
               >
                 <UserPlus className="w-4 h-4 text-[#718B9A]" />
                 <span>Add Team Member</span>
@@ -162,13 +156,13 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
         </div>
 
         {/* Demo Role Switcher Tabs */}
-        <div className="hidden sm:flex items-center gap-1 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg p-0.5 shadow-2xs">
+        <div className="hidden sm:flex items-center bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] rounded-lg p-0.5 text-xs font-medium">
           <button
             onClick={() => switchRole('superadmin')}
             className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-all cursor-pointer ${
               currentUser?.roleKey === 'superadmin'
-                ? 'bg-[#202824] text-white shadow-xs'
-                : 'text-[#777F79] hover:text-[#242B27]'
+                ? 'bg-white dark:bg-[#1C221F] text-[#242B27] dark:text-[#EDEDEA] shadow-xs'
+                : 'text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA]'
             }`}
             title="Preview Super Admin workspace"
           >
@@ -178,8 +172,8 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
             onClick={() => switchRole('admin')}
             className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-all cursor-pointer ${
               currentUser?.roleKey === 'admin'
-                ? 'bg-[#A77B50] text-white shadow-xs'
-                : 'text-[#777F79] hover:text-[#242B27]'
+                ? 'bg-white dark:bg-[#1C221F] text-[#A77B50] shadow-xs font-bold'
+                : 'text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA]'
             }`}
             title="Preview Admin PM workspace"
           >
@@ -189,8 +183,8 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
             onClick={() => switchRole('employee')}
             className={`px-2.5 py-1 text-[11px] font-semibold rounded-md transition-all cursor-pointer ${
               currentUser?.roleKey === 'employee'
-                ? 'bg-[#657A6A] text-white shadow-xs'
-                : 'text-[#777F79] hover:text-[#242B27]'
+                ? 'bg-white dark:bg-[#1C221F] text-[#657A6A] shadow-xs font-bold'
+                : 'text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA]'
             }`}
             title="Preview Field Specialist workspace"
           >
@@ -198,23 +192,17 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
           </button>
         </div>
 
-        {/* Dark / Light Theme Toggle Pill */}
+        {/* Dark / Light Theme Toggle */}
         <button
           onClick={toggleTheme}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#E7E9E3] bg-[#F6F6F2] hover:bg-[#EBF0EC] text-xs font-semibold text-[#242B27] transition-all cursor-pointer shadow-2xs group"
+          className="p-2 rounded-lg text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] border border-transparent hover:border-[#E7E9E3] dark:hover:border-[#2A332E] transition-all cursor-pointer group"
           aria-label={isDark ? "Switch to Architectural Light Mode" : "Switch to Blueprint Dark Mode"}
-          title="Click to toggle Dark/Light mode (Shortcut: Shift+D)"
+          title={isDark ? "Switch to Light Theme (Shift+D)" : "Switch to Dark Theme (Shift+D)"}
         >
           {isDark ? (
-            <>
-              <Sun className="w-3.5 h-3.5 text-[#C29567] transition-transform duration-300 group-hover:rotate-45" />
-              <span className="hidden sm:inline text-[#EDEDEA]">Light</span>
-            </>
+            <Sun className="w-4 h-4 text-[#C29567] transition-transform duration-300 group-hover:rotate-45" />
           ) : (
-            <>
-              <Moon className="w-3.5 h-3.5 text-[#657A6A] transition-transform duration-300 group-hover:-rotate-12" />
-              <span className="hidden sm:inline text-[#242B27]">Dark</span>
-            </>
+            <Moon className="w-4 h-4 text-[#657A6A] transition-transform duration-300 group-hover:-rotate-12" />
           )}
         </button>
 
@@ -222,12 +210,12 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
         <div className="relative" ref={notifRef}>
           <button
             onClick={() => setNotifDropdownOpen(!notifDropdownOpen)}
-            className="relative p-2 rounded-lg text-[#777F79] hover:text-[#242B27] hover:bg-[#F6F6F2] transition-colors cursor-pointer"
+            className="relative p-2 rounded-lg text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA] hover:bg-[#F6F6F2] dark:hover:bg-[#232B27] border border-transparent hover:border-[#E7E9E3] dark:hover:border-[#2A332E] transition-colors cursor-pointer"
             aria-label="Notifications"
           >
             <Bell className="w-4 h-4" />
             {unreadNotifications.length > 0 && (
-              <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#C66C62] ring-2 ring-white" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#C66C62] ring-2 ring-white dark:ring-[#171C1A]" />
             )}
           </button>
 
@@ -297,6 +285,9 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
             </div>
           )}
         </div>
+
+        {/* Subtle Separator */}
+        <div className="h-5 w-px bg-[#E7E9E3] dark:bg-[#2A332E] hidden sm:block mx-0.5" />
 
         {/* User Profile Dropdown Menu */}
         <div className="relative" ref={userRef}>

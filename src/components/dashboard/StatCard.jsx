@@ -12,46 +12,39 @@ export function StatCard({
 }) {
   const variantStyles = {
     default: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#F6F6F2]',
-      iconColor: 'text-[#242B27]',
-      accent: 'border-t-[#A77B50]'
+      iconBg: 'bg-[#F6F6F2] dark:bg-[#232B27]',
+      iconColor: 'text-[#242B27] dark:text-[#EDEDEA]',
+      borderHover: 'hover:border-[#A77B50]/40'
     },
     bronze: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#A77B50]/10',
-      iconColor: 'text-[#A77B50]',
-      accent: 'border-t-[#A77B50]'
+      iconBg: 'bg-[#A77B50]/10 dark:bg-[#A77B50]/20',
+      iconColor: 'text-[#A77B50] dark:text-[#C29567]',
+      borderHover: 'hover:border-[#A77B50]'
     },
     sage: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#657A6A]/10',
-      iconColor: 'text-[#657A6A]',
-      accent: 'border-t-[#657A6A]'
+      iconBg: 'bg-[#657A6A]/10 dark:bg-[#657A6A]/20',
+      iconColor: 'text-[#657A6A] dark:text-[#7A9681]',
+      borderHover: 'hover:border-[#657A6A]'
     },
     success: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#5D8068]/10',
-      iconColor: 'text-[#5D8068]',
-      accent: 'border-t-[#5D8068]'
+      iconBg: 'bg-[#5D8068]/10 dark:bg-[#5D8068]/20',
+      iconColor: 'text-[#5D8068] dark:text-[#7EB88F]',
+      borderHover: 'hover:border-[#5D8068]'
     },
     warning: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#C28D4E]/10',
-      iconColor: 'text-[#C28D4E]',
-      accent: 'border-t-[#C28D4E]'
+      iconBg: 'bg-[#C28D4E]/10 dark:bg-[#C28D4E]/20',
+      iconColor: 'text-[#C28D4E] dark:text-[#DFAB62]',
+      borderHover: 'hover:border-[#C28D4E]'
     },
     danger: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#C66C62]/10',
-      iconColor: 'text-[#C66C62]',
-      accent: 'border-t-[#C66C62]'
+      iconBg: 'bg-[#C66C62]/10 dark:bg-[#C66C62]/20',
+      iconColor: 'text-[#C66C62] dark:text-[#E48479]',
+      borderHover: 'hover:border-[#C66C62]'
     },
     info: {
-      border: 'border-[#E7E9E3]',
-      iconBg: 'bg-[#718B9A]/10',
-      iconColor: 'text-[#718B9A]',
-      accent: 'border-t-[#718B9A]'
+      iconBg: 'bg-[#718B9A]/10 dark:bg-[#718B9A]/20',
+      iconColor: 'text-[#718B9A] dark:text-[#92B4C8]',
+      borderHover: 'hover:border-[#718B9A]'
     }
   };
 
@@ -60,31 +53,32 @@ export function StatCard({
   return (
     <div
       onClick={onClick}
-      className={`bg-white rounded-xl border ${style.border} border-t-2 ${style.accent} p-4 sm:p-4.5 shadow-xs transition-all duration-200 select-none ${
-        onClick ? 'cursor-pointer hover:border-[#D5D8CF] hover:shadow-md hover:-translate-y-0.5' : ''
-      }`}
+      className={`bg-white dark:bg-[#1C221F] rounded-xl border border-[#E7E9E3] dark:border-[#2A332E] p-4.5 shadow-xs transition-all duration-200 select-none flex flex-col justify-between ${
+        onClick ? 'cursor-pointer hover:shadow-md hover:-translate-y-0.5' : ''
+      } ${style.borderHover}`}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-[#777F79] block truncate">
+      <div>
+        <div className="flex items-center justify-between gap-2 mb-2.5">
+          <span className="text-xs font-medium text-[#777F79] dark:text-[#9BA29C]">
             {title}
           </span>
-          <div className="text-2xl sm:text-2.5xl font-extrabold text-[#242B27] font-heading mt-1 tracking-tight leading-tight">
-            {value}
+          <div className={`w-8 h-8 rounded-lg ${style.iconBg} ${style.iconColor} flex items-center justify-center shrink-0`}>
+            {Icon && <Icon className="w-4 h-4" />}
           </div>
         </div>
-        <div className={`w-9 h-9 rounded-lg ${style.iconBg} ${style.iconColor} flex items-center justify-center shrink-0 border border-[#E7E9E3]/40`}>
-          <Icon className="w-4.5 h-4.5" />
+
+        <div className="text-2xl sm:text-3xl font-extrabold text-[#242B27] dark:text-[#EDEDEA] font-heading tracking-tight leading-none mb-1">
+          {value}
         </div>
       </div>
 
       {(description || trend) && (
-        <div className="mt-2.5 pt-2 border-t border-[#F6F6F2] flex items-center justify-between text-[11px] text-[#777F79]">
-          <span className="truncate">{description}</span>
+        <div className="mt-3 pt-2.5 border-t border-[#F0F2EC] dark:border-[#242D28] flex items-center justify-between text-[11px] text-[#777F79] dark:text-[#9BA29C] leading-none">
+          <span className="truncate pr-1">{description}</span>
           {trend && (
             <span
-              className={`font-mono font-semibold shrink-0 ml-1.5 ${
-                trendPositive ? 'text-[#5D8068]' : 'text-[#C66C62]'
+              className={`font-mono font-semibold shrink-0 ${
+                trendPositive ? 'text-[#5D8068] dark:text-[#7EB88F]' : 'text-[#C66C62] dark:text-[#E48479]'
               }`}
             >
               {trend}

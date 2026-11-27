@@ -14,7 +14,7 @@ export function AppLayout() {
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-[#F6F6F2] text-[#242B27]">
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex shrink-0">
+      <div className="hidden md:flex shrink-0 h-full">
         <Sidebar
           collapsed={collapsed}
           onToggleCollapse={() => setCollapsed(!collapsed)}
