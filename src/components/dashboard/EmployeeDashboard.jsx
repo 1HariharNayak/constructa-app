@@ -18,6 +18,7 @@ import { StatusBadge, PriorityBadge } from '../common/Badge';
 import { Button } from '../common/Button';
 import { Modal } from '../common/Modal';
 import { isOverdue, formatShortDate } from '../../utils/formatters';
+import { getStatusStyle } from '../../utils/statusStyles';
 
 export function EmployeeDashboard({
   currentUser,
@@ -279,11 +280,9 @@ export function EmployeeDashboard({
                         <span className="text-[#777F79]">Progress</span>
                         <span className="font-mono font-bold text-[#242B27]">{task.progress}%</span>
                       </div>
-                      <div className="w-full bg-[#E7E9E3] h-1.5 rounded-full overflow-hidden">
+                      <div className="w-full bg-[#E7E9E3] dark:bg-[#2A332E] h-1.5 rounded-full overflow-hidden">
                         <div
-                          className={`h-full rounded-full transition-all ${
-                            task.status === 'Completed' ? 'bg-[#5D8068]' : 'bg-[#A77B50]'
-                          }`}
+                          className={`h-full rounded-full transition-all ${getStatusStyle(task.status).progressBg}`}
                           style={{ width: `${task.progress}%` }}
                         />
                       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBadge, PriorityBadge } from '../common/Badge';
 import { formatShortDate, isOverdue } from '../../utils/formatters';
+import { getStatusStyle } from '../../utils/statusStyles';
 import { Edit2, Trash2, ArrowUpRight, MessageSquare, Paperclip } from 'lucide-react';
 
 export function TaskTable({
@@ -92,9 +93,9 @@ export function TaskTable({
                   </td>
                   <td className="py-3 px-4 min-w-[100px]">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-[#E7E9E3] h-1.5 rounded-full overflow-hidden">
+                      <div className="flex-1 bg-[#E7E9E3] dark:bg-[#2A332E] h-1.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#A77B50] h-full rounded-full"
+                          className={`h-full rounded-full transition-all ${getStatusStyle(task.status).progressBg}`}
                           style={{ width: `${task.progress}%` }}
                         />
                       </div>

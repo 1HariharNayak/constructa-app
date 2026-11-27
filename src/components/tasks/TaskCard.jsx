@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, Paperclip, MessageSquare, AlertTriangle } from 'lucide-react';
 import { PriorityBadge } from '../common/Badge';
 import { isOverdue, formatShortDate } from '../../utils/formatters';
+import { getStatusStyle } from '../../utils/statusStyles';
 
 export function TaskCard({
   task,
@@ -10,6 +11,7 @@ export function TaskCard({
   onDragStart
 }) {
   const overdue = isOverdue(task.dueDate, task.status);
+  const statusStyle = getStatusStyle(task.status);
 
   // Find assigned employees
   const assignedList = employees.filter(e => task.assignedTo?.includes(e.id));
@@ -19,58 +21,52 @@ export function TaskCard({
       draggable
       onDragStart={(e) => onDragStart(e, task.id)}
       onClick={() => onClick(task)}
-      className={`p-3.5 rounded-xl border bg-white shadow-xs hover:shadow-md transition-all duration-150 cursor-grab active:cursor-grabbing select-none group ${
+      className={`p-3.5 rounded-xl border bg-white dark:bg-[#1C221F] shadow-xs hover:shadow-md transition-all duration-150 cursor-grab active:cursor-grabbing select-none group border-l-4 ${statusStyle.cardBorder} ${
         task.status === 'Blocked'
-          ? 'border-[#C66C62]/40 ring-1 ring-[#C66C62]/20'
+          ? 'border-rose-300 dark:border-rose-900/60 ring-1 ring-rose-400/20'
           : overdue
-          ? 'border-[#C28D4E]/40 ring-1 ring-[#C28D4E]/20'
-          : 'border-[#E7E9E3] hover:border-[#D5D8CF]'
+          ? 'border-amber-300 dark:border-amber-900/60 ring-1 ring-amber-400/20'
+          : 'border-[#E7E9E3] dark:border-[#2A332E] hover:border-[#D5D8CF] dark:hover:border-[#38453E]'
       }`}
     >
       {/* Header: Project name & Priority */}
       <div className="flex items-center justify-between gap-1 text-[11px] mb-2">
-        <span className="font-semibold text-[#777F79] uppercase tracking-wider truncate max-w-[140px]">
+        <span className="font-semibold text-[#777F79] dark:text-[#9BA29C] uppercase tracking-wider truncate max-w-[140px]">
           {task.projectName}
         </span>
         <PriorityBadge priority={task.priority} size="xs" />
       </div>
 
       {/* Task ID & Title */}
-      <h4 className="text-xs font-bold text-[#242B27] group-hover:text-[#A77B50] transition-colors leading-snug line-clamp-2 mb-2">
-        <span className="font-mono text-[#777F79] mr-1.5">{task.id}:</span>
+      <h4 className="text-xs font-bold text-[#242B27] dark:text-[#EDEDEA] group-hover:text-[#A77B50] dark:group-hover:text-[#C29567] transition-colors leading-snug line-clamp-2 mb-2">
+        <span className="font-mono text-[#777F79] dark:text-[#9BA29C] mr-1.5">{task.id}:</span>
         {task.title}
       </h4>
 
       {/* Blocker alert tag if blocked */}
       {task.status === 'Blocked' && task.blockerReason && (
-        <div className="p-1.5 rounded bg-[#C66C62]/10 border border-[#C66C62]/20 text-[#C66C62] text-[10px] flex items-start gap-1 font-medium mb-2.5">
-          <AlertTriangle className="w-3 h-3 shrink-0 mt-0.5" />
+        <div className="p-1.5 rounded bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 text-[10px] flex items-start gap-1 font-medium mb-2.5">
+          <AlertTriangle className="w-3 h-3 shrink-0 mt-0.5 text-rose-600" />
           <span className="line-clamp-1">{task.blockerReason}</span>
         </div>
       )}
 
-      {/* Progress track */}
+      {/* Progress track with distinctive status color */}
       <div className="mb-3">
-        <div className="flex items-center justify-between text-[10px] text-[#777F79] mb-1">
+        <div className="flex items-center justify-between text-[10px] text-[#777F79] dark:text-[#9BA29C] mb-1">
           <span>Progress</span>
-          <span className="font-mono font-bold text-[#242B27]">{task.progress}%</span>
+          <span className="font-mono font-bold text-[#242B27] dark:text-[#EDEDEA]">{task.progress}%</span>
         </div>
-        <div className="w-full bg-[#E7E9E3] h-1.5 rounded-full overflow-hidden">
+        <div className="w-full bg-[#E7E9E3] dark:bg-[#2A332E] h-1.5 rounded-full overflow-hidden">
           <div
-            className={`h-full rounded-full transition-all duration-300 ${
-              task.status === 'Completed'
-                ? 'bg-[#5D8068]'
-                : task.status === 'Blocked'
-                ? 'bg-[#C66C62]'
-                : 'bg-[#A77B50]'
-            }`}
+            className={`h-full rounded-full transition-all duration-300 ${statusStyle.progressBg}`}
             style={{ width: `${task.progress}%` }}
           />
         </div>
       </div>
 
       {/* Footer: Due date, Attachments, Comments, Avatars */}
-      <div className="flex items-center justify-between pt-2 border-t border-[#E7E9E3] text-[11px] text-[#777F79]">
+      <div className="flex items-center justify-between pt-2 border-t border-[#E7E9E3] dark:border-[#2A332E] text-[11px] text-[#777F79] dark:text-[#9BA29C]">
         <div className="flex items-center gap-2">
           {/* Due date */}
           <span className={`flex items-center gap-1 font-mono ${overdue ? 'text-[#C66C62] font-bold' : ''}`}>

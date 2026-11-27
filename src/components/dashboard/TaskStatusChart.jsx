@@ -13,11 +13,11 @@ export function TaskStatusChart({ tasks }) {
   };
 
   const data = [
-    { name: 'Completed', value: counts.Completed, color: '#5D8068' },
-    { name: 'In Progress', value: counts['In Progress'], color: '#A77B50' },
-    { name: 'Pending', value: counts.Pending, color: '#8E9690' },
-    { name: 'Under Review', value: counts['Under Review'], color: '#C28D4E' },
-    { name: 'Blocked', value: counts.Blocked, color: '#C66C62' },
+    { name: 'Completed', value: counts.Completed, color: '#16A34A' },
+    { name: 'In Progress', value: counts['In Progress'], color: '#2563EB' },
+    { name: 'Under Review', value: counts['Under Review'], color: '#8B5CF6' },
+    { name: 'Pending', value: counts.Pending, color: '#64748B' },
+    { name: 'Blocked', value: counts.Blocked, color: '#DC2626' },
   ].filter(d => d.value > 0);
 
   const totalTasks = tasks.length;

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { TaskCard } from './TaskCard';
 import { Plus } from 'lucide-react';
+import { STATUS_COLORS } from '../../utils/statusStyles';
 
 const COLUMNS = [
-  { id: 'Pending', label: 'Pending', dot: 'bg-[#8E9690]', border: 'border-t-[#8E9690]' },
-  { id: 'In Progress', label: 'In Progress', dot: 'bg-[#A77B50]', border: 'border-t-[#A77B50]' },
-  { id: 'Under Review', label: 'Under Review', dot: 'bg-[#C28D4E]', border: 'border-t-[#C28D4E]' },
-  { id: 'Completed', label: 'Completed', dot: 'bg-[#5D8068]', border: 'border-t-[#5D8068]' },
-  { id: 'Blocked', label: 'Blocked', dot: 'bg-[#C66C62]', border: 'border-t-[#C66C62]' }
+  STATUS_COLORS['Pending'],
+  STATUS_COLORS['In Progress'],
+  STATUS_COLORS['Under Review'],
+  STATUS_COLORS['Completed'],
+  STATUS_COLORS['Blocked']
 ];
 
 export function KanbanBoard({
@@ -60,18 +61,18 @@ export function KanbanBoard({
             onDragOver={(e) => handleDragOver(e, col.id)}
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, col.id)}
-            className={`flex flex-col bg-[#F6F6F2] rounded-xl border border-[#E7E9E3] border-t-3 ${col.border} p-3 transition-colors ${
-              isTarget ? 'bg-[#A77B50]/10 ring-2 ring-[#A77B50]/40' : ''
+            className={`flex flex-col ${col.columnBg} rounded-xl border ${col.columnBorder} border-t-4 ${col.border} p-3 transition-colors ${
+              isTarget ? 'ring-2 ring-current ring-offset-1' : ''
             }`}
           >
             {/* Column Header */}
             <div className="flex items-center justify-between pb-3 px-1">
               <div className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${col.dot}`} />
-                <h3 className="text-xs font-bold text-[#242B27] tracking-wider uppercase">
+                <span className={`w-2.5 h-2.5 rounded-full ${col.dot} shadow-2xs`} />
+                <h3 className={`text-xs font-extrabold ${col.headerText} tracking-wider uppercase`}>
                   {col.label}
                 </h3>
-                <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full bg-white text-[#777F79] border border-[#E7E9E3]">
+                <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border shadow-2xs ${col.countBadge}`}>
                   {columnTasks.length}
                 </span>
               </div>
@@ -79,7 +80,7 @@ export function KanbanBoard({
               {onCreateTaskInColumn && (
                 <button
                   onClick={() => onCreateTaskInColumn(col.id)}
-                  className="p-1 rounded text-[#777F79] hover:text-[#242B27] hover:bg-white transition-colors cursor-pointer"
+                  className="p-1 rounded text-[#777F79] hover:text-[#242B27] dark:hover:text-[#EDEDEA] hover:bg-white/80 dark:hover:bg-[#232B27] transition-colors cursor-pointer"
                   title={`Add deliverable to ${col.label}`}
                 >
                   <Plus className="w-3.5 h-3.5" />
