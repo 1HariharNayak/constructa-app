@@ -42,6 +42,14 @@ export function Tasks() {
   // View state: 'kanban' | 'table'
   const [viewMode, setViewMode] = useState(initialView);
 
+  // Sync viewMode whenever searchParams changes
+  useEffect(() => {
+    const view = searchParams.get('view');
+    if (view === 'table' || view === 'kanban') {
+      setViewMode(view);
+    }
+  }, [searchParams]);
+
   // Filter states
   const [searchQuery, setSearchQuery] = useState('');
   const [projectFilter, setProjectFilter] = useState('All');

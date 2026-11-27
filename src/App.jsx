@@ -11,9 +11,12 @@ import { Dashboard } from './pages/Dashboard';
 import { Projects } from './pages/Projects';
 import { ProjectDetails } from './pages/ProjectDetails';
 import { Tasks } from './pages/Tasks';
+import { TaskBoard } from './pages/TaskBoard';
+import { Calendar } from './pages/Calendar';
 import { Milestones } from './pages/Milestones';
 import { Team } from './pages/Team';
 import { Reports } from './pages/Reports';
+import { ActivityLogs } from './pages/ActivityLogs';
 import { Notifications } from './pages/Notifications';
 import { Settings } from './pages/Settings';
 
@@ -47,9 +50,12 @@ export function AppRoutes() {
         }
       >
         <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Navigate to="/" replace />} />
         <Route path="projects" element={<Projects />} />
         <Route path="projects/:id" element={<ProjectDetails />} />
         <Route path="tasks" element={<Tasks />} />
+        <Route path="board" element={<TaskBoard />} />
+        <Route path="calendar" element={<Calendar />} />
         <Route path="milestones" element={<Milestones />} />
         <Route path="team" element={<Team />} />
 
@@ -62,6 +68,7 @@ export function AppRoutes() {
             </RoleGuard>
           }
         />
+        <Route path="activity" element={<ActivityLogs />} />
         <Route path="notifications" element={<Notifications />} />
         <Route
           path="settings"

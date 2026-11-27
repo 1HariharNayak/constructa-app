@@ -21,11 +21,14 @@ export function Breadcrumbs() {
 
   const getLabel = (segment, index) => {
     if (segment === 'projects') return 'All Projects';
-    if (segment === 'tasks') return 'Work Orders & Tasks';
-    if (segment === 'milestones') return 'Roadmap & Calendar';
-    if (segment === 'team') return 'Specialists Directory';
+    if (segment === 'tasks') return 'My Tasks';
+    if (segment === 'board') return 'Task Board';
+    if (segment === 'calendar') return 'Schedule Calendar';
+    if (segment === 'milestones') return 'Roadmap & Milestones';
+    if (segment === 'team') return 'Team Members';
     if (segment === 'reports') return 'Task Reports & Analytics';
-    if (segment === 'notifications') return 'Activity & Notifications';
+    if (segment === 'activity') return 'Site Activity Logs';
+    if (segment === 'notifications') return 'Notifications';
     if (segment === 'settings') return 'Enterprise Settings';
 
     // If segment is a project ID

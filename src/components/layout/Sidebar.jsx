@@ -56,17 +56,16 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
           to: '/tasks',
           label: 'My Tasks',
           icon: CheckSquare,
-          exact: location.pathname === '/tasks' && !location.search.includes('view=kanban')
+          exact: true
         },
         {
-          to: '/tasks?view=kanban',
+          to: '/board',
           label: 'Task Board',
-          icon: Kanban,
-          isActiveOverride: location.pathname === '/tasks' && location.search.includes('view=kanban')
+          icon: Kanban
         },
         {
-          to: '/milestones',
-          label: 'Calendar & Roadmap',
+          to: '/calendar',
+          label: 'Calendar',
           icon: Calendar
         }
       ]
@@ -87,10 +86,9 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
           }
         ] : []),
         {
-          to: '/notifications?tab=activity',
+          to: '/activity',
           label: 'Activity Logs',
-          icon: Activity,
-          isActiveOverride: location.pathname === '/notifications' && location.search.includes('tab=activity')
+          icon: Activity
         }
       ]
     },
@@ -101,8 +99,7 @@ export function Sidebar({ collapsed, onToggleCollapse, onOpenHelp }) {
           to: '/notifications',
           label: 'Notifications',
           icon: Bell,
-          badge: unreadCount > 0 ? unreadCount : null,
-          isActiveOverride: location.pathname === '/notifications' && !location.search.includes('tab=activity')
+          badge: unreadCount > 0 ? unreadCount : null
         },
         ...(!isEmployee ? [
           {
