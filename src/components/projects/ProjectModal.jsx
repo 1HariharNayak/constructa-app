@@ -140,29 +140,29 @@ export function ProjectModal({
         {/* Name & Code */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="sm:col-span-2 space-y-1">
-            <label className="font-semibold text-[#252821]">
-              Project Name <span className="text-[#C96B5D]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Project Name <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g. Skyline Logistics Hub Phase 2"
-              className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40 ${
-                errors.name ? 'border-[#C96B5D]' : 'border-[#E9E7DF]'
+              className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+                errors.name ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
               }`}
             />
-            {errors.name && <p className="text-[11px] text-[#C96B5D]">{errors.name}</p>}
+            {errors.name && <p className="text-[11px] text-rose-500">{errors.name}</p>}
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Project Code</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Project Code</label>
             <input
               type="text"
               value={formData.code}
               onChange={(e) => setFormData({ ...formData, code: e.target.value })}
               placeholder="SLH-2026"
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white font-mono uppercase focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono uppercase focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
         </div>
@@ -170,27 +170,27 @@ export function ProjectModal({
         {/* Location & Type */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">
-              Site Location <span className="text-[#C96B5D]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Site Location <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
               placeholder="e.g. 742 Industrial Parkway, Denver, CO"
-              className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40 ${
-                errors.location ? 'border-[#C96B5D]' : 'border-[#E9E7DF]'
+              className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+                errors.location ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
               }`}
             />
-            {errors.location && <p className="text-[11px] text-[#C96B5D]">{errors.location}</p>}
+            {errors.location && <p className="text-[11px] text-rose-500">{errors.location}</p>}
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Facility Classification</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Facility Classification</label>
             <select
               value={formData.type}
               onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Commercial High-Rise">Commercial High-Rise</option>
               <option value="Residential Multi-Family">Residential Multi-Family</option>
@@ -204,44 +204,44 @@ export function ProjectModal({
 
         {/* Description */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#252821]">Project Scope & Engineering Summary</label>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">Project Scope & Engineering Summary</label>
           <textarea
             rows={2}
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             placeholder="Key architectural highlights, structural framing system, LEED goals..."
-            className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           />
         </div>
 
         {/* Timeline & Status */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Start Date</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Start Date</label>
             <input
               type="date"
               value={formData.startDate}
               onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white font-mono focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Expected Completion</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Expected Completion</label>
             <input
               type="date"
               value={formData.endDate}
               onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white font-mono focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Project Status</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Project Status</label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Planning">Planning</option>
               <option value="In Progress">In Progress</option>
@@ -253,11 +253,11 @@ export function ProjectModal({
 
         {/* Assign Project Manager */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#252821]">Assign Lead Project Manager</label>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">Assign Lead Project Manager</label>
           <select
             value={formData.manager}
             onChange={(e) => setFormData({ ...formData, manager: e.target.value })}
-            className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="Arthur Sterling">Arthur Sterling (Senior Construction PM)</option>
             <option value="Alexandra Wright">Alexandra Wright (Partner & VP Operations)</option>
@@ -266,10 +266,10 @@ export function ProjectModal({
 
         {/* Staff Assignment */}
         <div className="space-y-1.5">
-          <label className="font-semibold text-[#252821]">
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
             Assign Field Staff & Engineering Leads ({formData.assignedEmployees.length} selected)
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-h-36 overflow-y-auto p-2 bg-[#FAF9F6] border border-[#E9E7DF] rounded-lg">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-h-36 overflow-y-auto p-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
             {employees.map(emp => {
               const selected = formData.assignedEmployees.includes(emp.id);
               return (
@@ -278,8 +278,8 @@ export function ProjectModal({
                   onClick={() => toggleEmployee(emp.id)}
                   className={`p-1.5 rounded-md border flex items-center gap-2 cursor-pointer transition-colors ${
                     selected
-                      ? 'border-[#687653] bg-[#EEF1E9] text-[#252821]'
-                      : 'border-[#E9E7DF] bg-white hover:border-[#DDD9CF] text-[#77786F]'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   <img src={emp.avatar} alt="" className="w-5 h-5 rounded-full object-cover shrink-0" />
@@ -292,8 +292,8 @@ export function ProjectModal({
 
         {/* Cover Photo Presets */}
         <div className="space-y-1.5">
-          <label className="font-semibold text-[#252821] flex items-center gap-1.5">
-            <Image className="w-3.5 h-3.5 text-[#687653]" />
+          <label className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+            <Image className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             Select Architectural Cover Photography
           </label>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
@@ -304,13 +304,13 @@ export function ProjectModal({
                   key={idx}
                   onClick={() => setFormData({ ...formData, coverImage: img.url })}
                   className={`relative h-14 rounded-lg overflow-hidden border-2 cursor-pointer transition-all ${
-                    isSelected ? 'border-[#687653] ring-2 ring-[#687653]/30 scale-95' : 'border-transparent opacity-70 hover:opacity-100'
+                    isSelected ? 'border-blue-600 ring-2 ring-blue-600/30 scale-95' : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                   title={img.name}
                 >
                   <img src={img.url} alt="" className="w-full h-full object-cover" />
                   {isSelected && (
-                    <div className="absolute inset-0 bg-[#687653]/40 flex items-center justify-center text-white">
+                    <div className="absolute inset-0 bg-blue-600/40 flex items-center justify-center text-white">
                       <Check className="w-4 h-4 stroke-[3]" />
                     </div>
                   )}

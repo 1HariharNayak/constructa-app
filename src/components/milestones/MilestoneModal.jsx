@@ -104,28 +104,28 @@ export function MilestoneModal({
       <form onSubmit={handleSubmit} className="space-y-4 text-xs">
         {/* Name with presets */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#242B27]">
-            Milestone Title <span className="text-[#C66C62]">*</span>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
+            Milestone Title <span className="text-rose-500">*</span>
           </label>
           <input
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="e.g. Deep Foundation & Pile Caps"
-            className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50] ${
-              errors.name ? 'border-[#C66C62]' : 'border-[#E7E9E3]'
+            className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+              errors.name ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
             }`}
           />
-          {errors.name && <p className="text-[11px] text-[#C66C62]">{errors.name}</p>}
+          {errors.name && <p className="text-[11px] text-rose-500">{errors.name}</p>}
 
           <div className="flex items-center gap-1.5 overflow-x-auto py-1 text-[10px]">
-            <span className="text-[#777F79] shrink-0 font-medium">Quick Presets:</span>
+            <span className="text-slate-400 shrink-0 font-medium">Quick Presets:</span>
             {COMMON_MILESTONE_PRESETS.slice(0, 4).map((preset, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => setFormData({ ...formData, name: preset })}
-                className="px-2 py-0.5 rounded bg-[#F6F6F2] text-[#242B27] hover:bg-[#E7E9E3] shrink-0 transition-colors cursor-pointer"
+                className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600 shrink-0 transition-colors cursor-pointer"
               >
                 {preset.split('&')[0]}
               </button>
@@ -135,13 +135,13 @@ export function MilestoneModal({
 
         {/* Project */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#242B27]">
-            Project Assignment <span className="text-[#C66C62]">*</span>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
+            Project Assignment <span className="text-rose-500">*</span>
           </label>
           <select
             value={formData.projectId}
             onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
-            className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             {projects.map(p => (
               <option key={p.id} value={p.id}>
@@ -153,35 +153,35 @@ export function MilestoneModal({
 
         {/* Description */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#242B27]">Milestone Deliverables & Criteria</label>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">Milestone Deliverables & Criteria</label>
           <textarea
             rows={2}
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             placeholder="Specify third-party inspection signoffs, structural tolerances, or signoff criteria..."
-            className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           />
         </div>
 
         {/* Dates */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Start Date</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Start Date</label>
             <input
               type="date"
               value={formData.startDate}
               onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white font-mono focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Target Completion Date</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Target Completion Date</label>
             <input
               type="date"
               value={formData.targetDate}
               onChange={(e) => setFormData({ ...formData, targetDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white font-mono focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
         </div>
@@ -189,7 +189,7 @@ export function MilestoneModal({
         {/* Status & Progress */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Status</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Status</label>
             <select
               value={formData.status}
               onChange={(e) => {
@@ -198,7 +198,7 @@ export function MilestoneModal({
                 if (st === 'Completed') p = 100;
                 setFormData({ ...formData, status: st, progress: p });
               }}
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Pending">Pending</option>
               <option value="In Progress">In Progress</option>
@@ -209,8 +209,8 @@ export function MilestoneModal({
 
           <div className="space-y-1">
             <div className="flex justify-between">
-              <label className="font-semibold text-[#242B27]">Completion Ratio</label>
-              <span className="font-mono font-bold text-[#A77B50]">{formData.progress}%</span>
+              <label className="font-semibold text-slate-800 dark:text-slate-200">Completion Ratio</label>
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{formData.progress}%</span>
             </div>
             <input
               type="range"
@@ -219,7 +219,7 @@ export function MilestoneModal({
               step="5"
               value={formData.progress}
               onChange={(e) => setFormData({ ...formData, progress: Number(e.target.value) })}
-              className="w-full accent-[#A77B50] cursor-pointer mt-2"
+              className="w-full accent-blue-600 cursor-pointer mt-2"
             />
           </div>
         </div>

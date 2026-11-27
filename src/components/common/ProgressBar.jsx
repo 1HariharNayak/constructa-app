@@ -3,11 +3,11 @@ import React from 'react';
 export function ProgressBar({ value = 0, max = 100, showLabel = false, size = 'md', className = '' }) {
   const percent = Math.min(100, Math.max(0, Math.round((value / max) * 100)));
 
-  let color = 'bg-[#A77B50]';
+  let color = 'bg-blue-600';
   if (percent >= 100) {
-    color = 'bg-[#5D8068]';
+    color = 'bg-emerald-600';
   } else if (percent < 30) {
-    color = 'bg-[#C28D4E]';
+    color = 'bg-amber-500';
   }
 
   const heightClass = {
@@ -20,12 +20,12 @@ export function ProgressBar({ value = 0, max = 100, showLabel = false, size = 'm
   return (
     <div className={`w-full ${className}`}>
       {showLabel && (
-        <div className="flex justify-between items-center text-xs mb-1 font-medium text-[#242B27]">
-          <span className="text-[#777F79]">Progress</span>
+        <div className="flex justify-between items-center text-xs mb-1 font-medium text-slate-900 dark:text-white">
+          <span className="text-slate-500 dark:text-slate-400">Progress</span>
           <span className="font-semibold">{percent}%</span>
         </div>
       )}
-      <div className={`w-full bg-[#E7E9E3]/70 rounded-full overflow-hidden ${heightClass}`}>
+      <div className={`w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden ${heightClass}`}>
         <div
           className={`${heightClass} ${color} rounded-full transition-all duration-500 ease-out`}
           style={{ width: `${percent}%` }}
@@ -41,9 +41,9 @@ export function ProgressRing({ value = 0, size = 44, strokeWidth = 3.5, classNam
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (percent / 100) * circumference;
 
-  let strokeColor = '#A77B50';
-  if (percent >= 100) strokeColor = '#5D8068';
-  else if (percent < 30) strokeColor = '#C28D4E';
+  let strokeColor = '#2563EB';
+  if (percent >= 100) strokeColor = '#10B981';
+  else if (percent < 30) strokeColor = '#F59E0B';
 
   return (
     <div className={`relative inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
@@ -52,7 +52,7 @@ export function ProgressRing({ value = 0, size = 44, strokeWidth = 3.5, classNam
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#E7E9E3"
+          stroke="#E2E8F0"
           strokeWidth={strokeWidth}
           fill="transparent"
         />
@@ -69,7 +69,7 @@ export function ProgressRing({ value = 0, size = 44, strokeWidth = 3.5, classNam
           className="transition-all duration-700 ease-out"
         />
       </svg>
-      <span className="absolute text-[11px] font-bold text-[#242B27] tracking-tighter">
+      <span className="absolute text-[11px] font-bold text-slate-900 dark:text-white tracking-tighter">
         {percent}%
       </span>
     </div>

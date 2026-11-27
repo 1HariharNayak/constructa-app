@@ -49,41 +49,41 @@ export function getStatusStyle(status) {
   switch (status) {
     case 'Completed':
       return {
-        bg: 'bg-[#EEF1E9]',
-        text: 'text-[#465036]',
-        border: 'border-[#687653]/30',
-        dot: 'bg-[#687653]'
+        bg: 'bg-emerald-50 dark:bg-emerald-950/40',
+        text: 'text-emerald-700 dark:text-emerald-300',
+        border: 'border-emerald-200 dark:border-emerald-800',
+        dot: 'bg-emerald-600'
       };
     case 'In Progress':
       return {
-        bg: 'bg-[#F8EFE7]',
-        text: 'text-[#9F6534]',
-        border: 'border-[#B77945]/30',
-        dot: 'bg-[#B77945]'
+        bg: 'bg-blue-50 dark:bg-blue-950/40',
+        text: 'text-blue-700 dark:text-blue-300',
+        border: 'border-blue-200 dark:border-blue-800',
+        dot: 'bg-blue-600'
       };
     case 'Under Review':
       return {
-        bg: 'bg-amber-50',
-        text: 'text-amber-800',
-        border: 'border-amber-200',
-        dot: 'bg-[#D49A48]'
+        bg: 'bg-purple-50 dark:bg-purple-950/40',
+        text: 'text-purple-700 dark:text-purple-300',
+        border: 'border-purple-200 dark:border-purple-800',
+        dot: 'bg-purple-600'
       };
     case 'Delayed':
     case 'Blocked':
       return {
-        bg: 'bg-rose-50',
-        text: 'text-rose-800',
-        border: 'border-rose-200',
-        dot: 'bg-[#C96B5D]'
+        bg: 'bg-rose-50 dark:bg-rose-950/40',
+        text: 'text-rose-700 dark:text-rose-300',
+        border: 'border-rose-200 dark:border-rose-800',
+        dot: 'bg-rose-600'
       };
     case 'Pending':
     case 'Planning':
     default:
       return {
-        bg: 'bg-[#F0EFE9]',
-        text: 'text-[#4B4F45]',
-        border: 'border-[#DDD9CF]',
-        dot: 'bg-[#77786F]'
+        bg: 'bg-slate-100 dark:bg-slate-800',
+        text: 'text-slate-700 dark:text-slate-300',
+        border: 'border-slate-200 dark:border-slate-700',
+        dot: 'bg-slate-500'
       };
   }
 }
@@ -92,28 +92,28 @@ export function getPriorityStyle(priority) {
   switch (priority) {
     case 'Urgent':
       return {
-        bg: 'bg-rose-50',
-        text: 'text-rose-700',
-        border: 'border-rose-200'
+        bg: 'bg-rose-50 dark:bg-rose-950/40',
+        text: 'text-rose-700 dark:text-rose-300',
+        border: 'border-rose-200 dark:border-rose-800'
       };
     case 'High':
       return {
-        bg: 'bg-[#F8EFE7]',
-        text: 'text-[#9F6534]',
-        border: 'border-[#B77945]/30'
+        bg: 'bg-amber-50 dark:bg-amber-950/40',
+        text: 'text-amber-700 dark:text-amber-300',
+        border: 'border-amber-200 dark:border-amber-800'
       };
     case 'Medium':
       return {
-        bg: 'bg-amber-50',
-        text: 'text-amber-700',
-        border: 'border-amber-200'
+        bg: 'bg-blue-50 dark:bg-blue-950/40',
+        text: 'text-blue-700 dark:text-blue-300',
+        border: 'border-blue-200 dark:border-blue-800'
       };
     case 'Low':
     default:
       return {
-        bg: 'bg-[#F0EFE9]',
-        text: 'text-[#77786F]',
-        border: 'border-[#E9E7DF]'
+        bg: 'bg-slate-100 dark:bg-slate-800',
+        text: 'text-slate-600 dark:text-slate-400',
+        border: 'border-slate-200 dark:border-slate-700'
       };
   }
 }

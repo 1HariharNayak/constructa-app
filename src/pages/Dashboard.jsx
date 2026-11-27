@@ -101,18 +101,18 @@ export function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Dashboard Welcome Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-[#1C221F] rounded-xl border border-[#E7E9E3] dark:border-[#2A332E] shadow-xs">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Executive Portfolio Overview
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] dark:text-[#EDEDEA] font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             Good morning, {currentUser?.name?.split(' ')[0] || 'Anant'}
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] dark:text-[#9BA29C] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Here's what's happening across your capital construction projects today.
           </p>
         </div>
@@ -120,15 +120,15 @@ export function Dashboard() {
         {/* Cohesive Right Toolbar */}
         <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
           {/* Reporting Period Filter */}
-          <div className="flex items-center gap-1 bg-[#F6F6F2] dark:bg-[#232B27] border border-[#E7E9E3] dark:border-[#2A332E] rounded-lg p-0.5 text-xs">
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg p-0.5 text-xs">
             {['This Month', 'This Quarter', 'YTD'].map((period) => (
               <button
                 key={period}
                 onClick={() => setSelectedPeriod(period)}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all cursor-pointer ${
                   selectedPeriod === period
-                    ? 'bg-white dark:bg-[#1C221F] text-[#242B27] dark:text-[#EDEDEA] shadow-xs'
-                    : 'text-[#777F79] dark:text-[#9BA29C] hover:text-[#242B27] dark:hover:text-[#EDEDEA]'
+                    ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {period}

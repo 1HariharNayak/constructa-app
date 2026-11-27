@@ -137,31 +137,31 @@ export function TaskModal({
       <form onSubmit={handleSubmit} className="space-y-4 text-xs">
         {/* Title */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#252821]">
-            Task Title <span className="text-[#C96B5D]">*</span>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
+            Task Title <span className="text-rose-500">*</span>
           </label>
           <input
             type="text"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             placeholder="e.g. Conduct ultrasonic weld testing on moment connections"
-            className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40 ${
-              errors.title ? 'border-[#C96B5D]' : 'border-[#E9E7DF]'
+            className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+              errors.title ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
             }`}
           />
-          {errors.title && <p className="text-[11px] text-[#C96B5D]">{errors.title}</p>}
+          {errors.title && <p className="text-[11px] text-rose-500">{errors.title}</p>}
         </div>
 
         {/* Project & Milestone */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">
-              Assigned Project <span className="text-[#C96B5D]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Assigned Project <span className="text-rose-500">*</span>
             </label>
             <select
               value={formData.projectId}
               onChange={(e) => setFormData({ ...formData, projectId: e.target.value, milestoneId: '' })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               {projects.map(p => (
                 <option key={p.id} value={p.id}>
@@ -172,11 +172,11 @@ export function TaskModal({
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Associated Milestone</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Associated Milestone</label>
             <select
               value={formData.milestoneId}
               onChange={(e) => setFormData({ ...formData, milestoneId: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="">-- General Project Milestone --</option>
               {availableMilestones.map(m => (
@@ -190,24 +190,24 @@ export function TaskModal({
 
         {/* Description */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#252821]">Specification & Scope</label>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">Specification & Scope</label>
           <textarea
             rows={3}
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             placeholder="Detailed testing protocols, code references, tolerance standards, or safety notes..."
-            className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           />
         </div>
 
         {/* Priority & Status */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Priority Level</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Priority Level</label>
             <select
               value={formData.priority}
               onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Low">Low Priority</option>
               <option value="Medium">Medium Priority</option>
@@ -217,11 +217,11 @@ export function TaskModal({
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Workflow Column Status</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Workflow Column Status</label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Pending">Pending</option>
               <option value="In Progress">In Progress</option>
@@ -235,34 +235,34 @@ export function TaskModal({
         {/* Dates */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">Start Date</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Start Date</label>
             <input
               type="date"
               value={formData.startDate}
               onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white font-mono focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#252821]">
-              Target Due Date <span className="text-[#C96B5D]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Target Due Date <span className="text-rose-500">*</span>
             </label>
             <input
               type="date"
               value={formData.dueDate}
               onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E9E7DF] bg-white font-mono focus:outline-none focus:ring-2 focus:ring-[#687653]/40"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
         </div>
 
         {/* Assign Team Members */}
         <div className="space-y-1.5">
-          <label className="font-semibold text-[#252821]">
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
             Assign Personnel ({formData.assignedTo.length} assigned)
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-h-32 overflow-y-auto p-2 bg-[#FAF9F6] border border-[#E9E7DF] rounded-lg">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-h-32 overflow-y-auto p-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
             {employees.map(emp => {
               const selected = formData.assignedTo.includes(emp.id);
               return (
@@ -271,8 +271,8 @@ export function TaskModal({
                   onClick={() => toggleEmployee(emp.id)}
                   className={`p-1.5 rounded-md border flex items-center gap-2 cursor-pointer transition-colors ${
                     selected
-                      ? 'border-[#687653] bg-[#EEF1E9] text-[#252821]'
-                      : 'border-[#E9E7DF] bg-white hover:border-[#DDD9CF] text-[#77786F]'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   <img src={emp.avatar} alt="" className="w-5 h-5 rounded-full object-cover shrink-0" />
@@ -286,14 +286,14 @@ export function TaskModal({
         {/* Attachments Upload Simulator */}
         <div className="space-y-1.5 pt-1">
           <div className="flex items-center justify-between">
-            <label className="font-semibold text-[#252821] flex items-center gap-1">
-              <Paperclip className="w-3.5 h-3.5 text-[#687653]" />
+            <label className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1">
+              <Paperclip className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               Drawing & Field Attachments
             </label>
             <button
               type="button"
               onClick={handleSimulateAttachment}
-              className="text-[11px] font-semibold text-[#687653] hover:underline flex items-center gap-1 cursor-pointer"
+              className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 cursor-pointer"
             >
               <Plus className="w-3 h-3" />
               <span>Simulate Upload</span>
@@ -304,24 +304,24 @@ export function TaskModal({
             {formData.attachments?.map((file, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between p-2 rounded-lg bg-[#FAF9F6] border border-[#E9E7DF] text-[11px]"
+                className="flex items-center justify-between p-2 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[11px]"
               >
                 <div className="flex items-center gap-2 truncate">
-                  <Paperclip className="w-3.5 h-3.5 text-[#77786F] shrink-0" />
-                  <span className="font-medium text-[#252821] truncate">{file.name}</span>
-                  <span className="text-[#77786F] shrink-0 font-mono">({file.size})</span>
+                  <Paperclip className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                  <span className="font-medium text-slate-800 dark:text-slate-200 truncate">{file.name}</span>
+                  <span className="text-slate-400 shrink-0 font-mono">({file.size})</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => removeAttachment(idx)}
-                  className="text-[#77786F] hover:text-[#C96B5D] p-1"
+                  className="text-slate-400 hover:text-rose-600 p-1"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
               </div>
             ))}
             {(!formData.attachments || formData.attachments.length === 0) && (
-              <div className="text-[11px] text-[#77786F] italic bg-[#FAF9F6] p-2 rounded border border-dashed border-[#DDD9CF] text-center">
+              <div className="text-[11px] text-slate-400 italic bg-slate-50 dark:bg-slate-800 p-2 rounded border border-dashed border-slate-200 dark:border-slate-700 text-center">
                 No attachments uploaded. Click "Simulate Upload" to attach drawings or test slips.
               </div>
             )}

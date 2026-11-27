@@ -15,20 +15,20 @@ export function ConfirmDialog({
   isLoading = false
 }) {
   let Icon = AlertTriangle;
-  let iconBg = 'bg-[#FBF4EC] text-[#C28D4E]';
+  let iconBg = 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800';
   let confirmVariant = 'primary';
 
   if (type === 'danger') {
     Icon = AlertCircle;
-    iconBg = 'bg-[#F9ECEB] text-[#C66C62]';
+    iconBg = 'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800';
     confirmVariant = 'danger';
   } else if (type === 'warning') {
     Icon = AlertTriangle;
-    iconBg = 'bg-[#FBF4EC] text-[#C28D4E]';
+    iconBg = 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800';
     confirmVariant = 'primary';
   } else {
     Icon = HelpCircle;
-    iconBg = 'bg-[#EEF2F5] text-[#718B9A]';
+    iconBg = 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600';
     confirmVariant = 'secondary';
   }
 
@@ -39,11 +39,11 @@ export function ConfirmDialog({
           <Icon className="w-4 h-4" />
         </div>
         <div className="flex-1">
-          <p className="text-xs text-[#242B27] leading-relaxed">{message}</p>
+          <p className="text-xs text-slate-800 dark:text-slate-200 leading-relaxed">{message}</p>
         </div>
       </div>
 
-      <div className="mt-5 flex justify-end gap-2.5 pt-3.5 border-t border-[#F0F2EC]">
+      <div className="mt-5 flex justify-end gap-2.5 pt-3.5 border-t border-slate-100 dark:border-slate-700">
         <Button variant="outline" size="xs" onClick={onClose} disabled={isLoading}>
           {cancelText}
         </Button>

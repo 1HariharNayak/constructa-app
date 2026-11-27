@@ -14,18 +14,18 @@ export function MonthlyTaskChart() {
     { month: 'Nov', completed: 35, planned: 38 },
   ];
 
-  const gridStroke = isDark ? '#2A332E' : '#E7E9E3';
-  const axisColor = isDark ? '#9BA29C' : '#777F79';
-  const plannedColor = isDark ? '#2C3630' : '#E7E9E3';
+  const gridStroke = isDark ? '#334155' : '#E2E8F0';
+  const axisColor = isDark ? '#94A3B8' : '#64748B';
+  const plannedColor = isDark ? '#334155' : '#CBD5E1';
 
   return (
-    <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm sm:text-base font-bold text-[#242B27]">
+          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
             Monthly Deliverable Velocity
           </h3>
-          <p className="text-xs text-[#777F79] mt-0.5">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Actual certified completion throughput vs planned schedule targets
           </p>
         </div>
@@ -50,15 +50,15 @@ export function MonthlyTaskChart() {
               content={({ active, payload, label }) => {
                 if (active && payload && payload.length) {
                   return (
-                    <div className="bg-white p-3 rounded-lg border border-[#E7E9E3] shadow-md text-xs space-y-1.5">
-                      <div className="font-bold text-[#242B27]">{label} 2026</div>
-                      <div className="flex items-center gap-2 text-[#5D8068]">
-                        <span className="w-2 h-2 rounded-full bg-[#5D8068]" />
+                    <div className="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md text-xs space-y-1.5">
+                      <div className="font-bold text-slate-900 dark:text-white">{label} 2026</div>
+                      <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
+                        <span className="w-2 h-2 rounded-full bg-blue-600" />
                         <span>Completed:</span>
                         <span className="font-mono font-bold">{payload[0]?.value}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-[#777F79]">
-                        <span className="w-2 h-2 rounded-full bg-[#D5D8CF]" />
+                      <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                        <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
                         <span>Planned:</span>
                         <span className="font-mono font-bold">{payload[1]?.value}</span>
                       </div>
@@ -74,7 +74,7 @@ export function MonthlyTaskChart() {
               iconType="circle"
               wrapperStyle={{ paddingBottom: '12px', fontSize: '11px' }}
             />
-            <Bar dataKey="completed" name="Completed" fill="#5D8068" radius={[4, 4, 0, 0]} maxBarSize={28} />
+            <Bar dataKey="completed" name="Completed" fill="#2563EB" radius={[4, 4, 0, 0]} maxBarSize={28} />
             <Bar dataKey="planned" name="Planned" fill={plannedColor} radius={[4, 4, 0, 0]} maxBarSize={28} />
           </BarChart>
         </ResponsiveContainer>

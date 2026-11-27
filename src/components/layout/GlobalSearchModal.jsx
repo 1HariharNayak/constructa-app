@@ -59,31 +59,31 @@ export function GlobalSearchModal({ isOpen, onClose }) {
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#202824]/50 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
-      <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl border border-[#E7E9E3] overflow-hidden z-10 animate-in zoom-in-95 duration-150">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-10 animate-in zoom-in-95 duration-150">
         {/* Search input bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-[#E7E9E3] bg-[#F6F6F2]">
-          <Search className="w-5 h-5 text-[#A77B50] mr-3 shrink-0" />
+        <div className="flex items-center px-4 py-3.5 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50">
+          <Search className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3 shrink-0" />
           <input
             type="text"
             autoFocus
             placeholder="Search projects, tasks, drawings, or engineering staff..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm text-[#242B27] placeholder-[#777F79] focus:outline-none font-medium"
+            className="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none font-medium"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="text-[#777F79] hover:text-[#242B27] p-1 mr-1"
+              className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-1 mr-1"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-[#777F79] bg-white border border-[#E7E9E3] rounded shadow-2xs">
+          <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-slate-500 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded shadow-xs">
             ESC
           </kbd>
         </div>
@@ -93,8 +93,8 @@ export function GlobalSearchModal({ isOpen, onClose }) {
           {/* Projects */}
           {filteredProjects.length > 0 && (
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#777F79] mb-2 px-2">
-                <FolderKanban className="w-3.5 h-3.5 text-[#A77B50]" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 px-2">
+                <FolderKanban className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 Capital Projects
               </div>
               <div className="space-y-1">
@@ -102,22 +102,22 @@ export function GlobalSearchModal({ isOpen, onClose }) {
                   <button
                     key={p.id}
                     onClick={() => handleSelect(`/projects/${p.id}`)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-[#F6F6F2] transition-colors group cursor-pointer"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-[#F6F6F2] text-[#A77B50] border border-[#E7E9E3] flex items-center justify-center shrink-0 font-bold text-xs">
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800/40 flex items-center justify-center shrink-0 font-bold text-xs">
                         {p.name.charAt(0)}
                       </div>
                       <div className="truncate">
-                        <div className="text-sm font-medium text-[#242B27] group-hover:text-[#A77B50]">
+                        <div className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
                           {p.name}
                         </div>
-                        <div className="text-xs text-[#777F79] truncate">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
                           {p.location} • {p.status} ({p.progress}%)
                         </div>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-[#A77B50] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight className="w-4 h-4 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -127,8 +127,8 @@ export function GlobalSearchModal({ isOpen, onClose }) {
           {/* Tasks */}
           {filteredTasks.length > 0 && (
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#777F79] mb-2 px-2">
-                <CheckSquare className="w-3.5 h-3.5 text-[#657A6A]" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 px-2">
+                <CheckSquare className="w-3.5 h-3.5 text-emerald-500" />
                 Deliverables & Work Orders
               </div>
               <div className="space-y-1">
@@ -136,22 +136,22 @@ export function GlobalSearchModal({ isOpen, onClose }) {
                   <button
                     key={t.id}
                     onClick={() => handleSelect(`/tasks?taskId=${t.id}`)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-[#F6F6F2] transition-colors group cursor-pointer"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <span className="text-xs font-mono font-semibold px-1.5 py-0.5 rounded bg-[#F6F6F2] text-[#242B27] border border-[#E7E9E3]">
+                      <span className="text-xs font-mono font-semibold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
                         {t.id}
                       </span>
                       <div className="truncate">
-                        <div className="text-sm font-medium text-[#242B27] group-hover:text-[#657A6A] truncate">
+                        <div className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate">
                           {t.title}
                         </div>
-                        <div className="text-xs text-[#777F79] truncate">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
                           {t.projectName} • Priority: {t.priority} • {t.status}
                         </div>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-[#657A6A] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight className="w-4 h-4 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -161,8 +161,8 @@ export function GlobalSearchModal({ isOpen, onClose }) {
           {/* Team Members */}
           {filteredEmployees.length > 0 && (
             <div>
-              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#777F79] mb-2 px-2">
-                <Users className="w-3.5 h-3.5 text-[#718B9A]" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 px-2">
+                <Users className="w-3.5 h-3.5 text-indigo-500" />
                 Specialists Directory
               </div>
               <div className="space-y-1">
@@ -170,24 +170,24 @@ export function GlobalSearchModal({ isOpen, onClose }) {
                   <button
                     key={e.id}
                     onClick={() => handleSelect(`/team?employeeId=${e.id}`)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-[#F6F6F2] transition-colors group cursor-pointer"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg text-left hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <img
                         src={e.avatar}
                         alt={e.name}
-                        className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-[#E7E9E3]"
+                        className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-slate-200 dark:ring-slate-700"
                       />
                       <div className="truncate">
-                        <div className="text-sm font-medium text-[#242B27] group-hover:text-[#718B9A]">
+                        <div className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
                           {e.name}
                         </div>
-                        <div className="text-xs text-[#777F79] truncate">
+                        <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
                           {e.role} • {e.department}
                         </div>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-[#718B9A] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight className="w-4 h-4 text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -195,17 +195,17 @@ export function GlobalSearchModal({ isOpen, onClose }) {
           )}
 
           {filteredProjects.length === 0 && filteredTasks.length === 0 && filteredEmployees.length === 0 && (
-            <div className="text-center py-8 text-[#777F79] text-sm">
+            <div className="text-center py-8 text-slate-400 text-sm">
               No matching records found for "{query}".
             </div>
           )}
         </div>
 
         {/* Footer shortcuts */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-[#F6F6F2] border-t border-[#E7E9E3] text-[11px] text-[#777F79]">
+        <div className="flex items-center justify-between px-4 py-2.5 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700 text-[11px] text-slate-500 dark:text-slate-400">
           <span>Jump directly to capital projects, work orders, or engineering leads</span>
           <div className="flex items-center gap-3">
-            <span>Press <kbd className="px-1 py-0.5 bg-white border border-[#E7E9E3] rounded font-mono">ESC</kbd> to exit</span>
+            <span>Press <kbd className="px-1 py-0.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded font-mono">ESC</kbd> to exit</span>
           </div>
         </div>
       </div>

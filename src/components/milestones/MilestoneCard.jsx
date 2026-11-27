@@ -13,18 +13,18 @@ export function MilestoneCard({
   const completedCount = linkedTasks.filter(t => t.status === 'Completed').length;
 
   return (
-    <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs hover:border-[#D5D8CF] hover:shadow-md transition-all flex flex-col justify-between group">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs hover:border-slate-300 dark:hover:border-slate-600 hover:shadow-md transition-all flex flex-col justify-between group">
       <div>
         <div className="flex items-start justify-between gap-3 mb-2">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-lg bg-[#F6F6F2] border border-[#E7E9E3] text-[#A77B50] flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
               <Flag className="w-4 h-4" />
             </div>
             <div className="min-w-0">
-              <h3 className="text-sm font-bold text-[#242B27] group-hover:text-[#A77B50] transition-colors truncate">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
                 {milestone.name}
               </h3>
-              <span className="text-[11px] text-[#777F79] block truncate">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 block truncate">
                 {milestone.projectName}
               </span>
             </div>
@@ -36,14 +36,14 @@ export function MilestoneCard({
               <div className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
                 <button
                   onClick={() => onEdit(milestone)}
-                  className="p-1 text-[#777F79] hover:text-[#A77B50] rounded"
+                  className="p-1 text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 rounded"
                   title="Edit Milestone"
                 >
                   <Edit2 className="w-3.5 h-3.5" />
                 </button>
                 <button
                   onClick={() => onDelete(milestone.id)}
-                  className="p-1 text-[#777F79] hover:text-[#C66C62] rounded"
+                  className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded"
                   title="Delete Milestone"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
@@ -54,38 +54,38 @@ export function MilestoneCard({
         </div>
 
         {milestone.description && (
-          <p className="text-xs text-[#777F79] mt-2 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 line-clamp-2 leading-relaxed">
             {milestone.description}
           </p>
         )}
 
         {/* Date details */}
-        <div className="flex items-center justify-between text-xs text-[#777F79] mt-4 pt-3 border-t border-[#E7E9E3]">
+        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/80">
           <span className="font-mono flex items-center gap-1">
-            <Calendar className="w-3 h-3 text-[#A77B50]" />
+            <Calendar className="w-3 h-3 text-blue-600 dark:text-blue-400" />
             {milestone.startDate} → {milestone.targetDate}
           </span>
           <span className="flex items-center gap-1 font-medium">
-            <CheckSquare className="w-3 h-3 text-[#657A6A]" />
+            <CheckSquare className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
             {completedCount}/{linkedTasks.length} tasks
           </span>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="mt-4 pt-3 border-t border-[#E7E9E3]">
+      <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/80">
         <div className="flex items-center justify-between text-xs mb-1.5">
-          <span className="text-[#777F79]">Milestone Progress</span>
-          <span className="font-mono font-bold text-[#242B27]">{milestone.progress}%</span>
+          <span className="text-slate-500 dark:text-slate-400">Milestone Progress</span>
+          <span className="font-mono font-bold text-slate-900 dark:text-white">{milestone.progress}%</span>
         </div>
-        <div className="w-full bg-[#E7E9E3] h-2 rounded-full overflow-hidden">
+        <div className="w-full bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-500 ${
               milestone.status === 'Completed'
-                ? 'bg-[#5D8068]'
+                ? 'bg-emerald-600'
                 : milestone.status === 'Delayed'
-                ? 'bg-[#C66C62]'
-                : 'bg-[#A77B50]'
+                ? 'bg-rose-600'
+                : 'bg-blue-600'
             }`}
             style={{ width: `${milestone.progress}%` }}
           />

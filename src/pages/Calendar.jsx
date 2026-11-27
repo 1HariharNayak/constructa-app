@@ -102,19 +102,19 @@ export function Calendar() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Project Delivery Schedule
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight flex items-center gap-2.5">
-            <CalendarIcon className="w-7 h-7 text-[#A77B50]" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <CalendarIcon className="w-7 h-7 text-blue-600 dark:text-blue-400" />
             Master Schedule Calendar
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Unified view of key contractual milestones, stage gates, and field inspections.
           </p>
         </div>
@@ -123,24 +123,24 @@ export function Calendar() {
         <div className="flex items-center gap-2">
           <button
             onClick={jumpToday}
-            className="px-3 py-1.5 rounded-lg border border-[#E7E9E3] bg-[#F6F6F2] hover:bg-white text-xs font-semibold text-[#242B27] transition-all cursor-pointer shadow-2xs"
+            className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 hover:bg-white dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 transition-all cursor-pointer shadow-xs"
           >
             Today (Nov 2026)
           </button>
-          <div className="flex items-center bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg p-0.5 shadow-2xs">
+          <div className="flex items-center bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 rounded-lg p-0.5 shadow-xs">
             <button
               onClick={prevMonth}
-              className="p-1.5 rounded-md text-[#777F79] hover:text-[#242B27] hover:bg-white transition-colors cursor-pointer"
+              className="p-1.5 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-600 transition-colors cursor-pointer"
               title="Previous Month"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="px-3 text-xs font-bold font-heading text-[#242B27] min-w-36 text-center">
+            <span className="px-3 text-xs font-bold text-slate-900 dark:text-white min-w-36 text-center">
               {monthName}
             </span>
             <button
               onClick={nextMonth}
-              className="p-1.5 rounded-md text-[#777F79] hover:text-[#242B27] hover:bg-white transition-colors cursor-pointer"
+              className="p-1.5 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-600 transition-colors cursor-pointer"
               title="Next Month"
             >
               <ChevronRight className="w-4 h-4" />
@@ -150,13 +150,13 @@ export function Calendar() {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white rounded-xl border border-[#E7E9E3] p-4 shadow-xs flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-4 shadow-xs flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-[#777F79]">Filter Project:</span>
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Filter Project:</span>
           <select
             value={selectedProject}
             onChange={(e) => setSelectedProject(e.target.value)}
-            className="px-3 py-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs font-semibold text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="px-3 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Construction Sites</option>
             {projects.map(p => (
@@ -166,12 +166,12 @@ export function Calendar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-[#777F79]">View Layer:</span>
-          <div className="flex items-center gap-1 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg p-0.5 text-xs">
+          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">View Layer:</span>
+          <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-700/60 border border-slate-200 dark:border-slate-600 rounded-lg p-0.5 text-xs">
             <button
               onClick={() => setEventTypeFilter('all')}
               className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
-                eventTypeFilter === 'all' ? 'bg-[#202824] text-white shadow-xs' : 'text-[#777F79] hover:text-[#242B27]'
+                eventTypeFilter === 'all' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               All Events
@@ -179,7 +179,7 @@ export function Calendar() {
             <button
               onClick={() => setEventTypeFilter('milestones')}
               className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
-                eventTypeFilter === 'milestones' ? 'bg-[#A77B50] text-white shadow-xs' : 'text-[#777F79] hover:text-[#242B27]'
+                eventTypeFilter === 'milestones' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Milestones Only
@@ -187,7 +187,7 @@ export function Calendar() {
             <button
               onClick={() => setEventTypeFilter('tasks')}
               className={`px-2.5 py-1 rounded-md transition-all font-semibold ${
-                eventTypeFilter === 'tasks' ? 'bg-[#657A6A] text-white shadow-xs' : 'text-[#777F79] hover:text-[#242B27]'
+                eventTypeFilter === 'tasks' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Work Orders
@@ -197,9 +197,9 @@ export function Calendar() {
       </div>
 
       {/* Calendar Grid */}
-      <div className="bg-white rounded-xl border border-[#E7E9E3] shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs overflow-hidden">
         {/* Days of Week Header */}
-        <div className="grid grid-cols-7 border-b border-[#E7E9E3] bg-[#FAF9F6] text-center text-xs font-bold text-[#777F79] py-2.5">
+        <div className="grid grid-cols-7 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 text-center text-xs font-bold text-slate-500 dark:text-slate-400 py-2.5">
           <div>Sun</div>
           <div>Mon</div>
           <div>Tue</div>
@@ -210,7 +210,7 @@ export function Calendar() {
         </div>
 
         {/* Calendar Days Matrix */}
-        <div className="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-[#E7E9E3] border-b border-[#E7E9E3]">
+        <div className="grid grid-cols-7 auto-rows-fr divide-x divide-y divide-slate-200 dark:divide-slate-700 border-b border-slate-200 dark:border-slate-700">
           {calendarDays.map((cell, idx) => {
             // Find tasks due on this date
             const dayTasks = eventTypeFilter === 'milestones' ? [] : activeTasks.filter(t => t.dueDate === cell.dateString);
@@ -224,23 +224,23 @@ export function Calendar() {
               <div
                 key={idx}
                 className={`min-h-[110px] p-1.5 transition-colors ${
-                  isCurrentMonth ? 'bg-white hover:bg-[#FAF9F6]' : 'bg-[#F9F9F6] opacity-60'
+                  isCurrentMonth ? 'bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/40' : 'bg-slate-50/50 dark:bg-slate-900/40 opacity-60'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span
                     className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-semibold ${
                       isToday
-                        ? 'bg-[#A77B50] text-white font-bold'
+                        ? 'bg-blue-600 text-white font-bold'
                         : isCurrentMonth
-                          ? 'text-[#242B27]'
-                          : 'text-[#8E9690]'
+                          ? 'text-slate-900 dark:text-white'
+                          : 'text-slate-400'
                     }`}
                   >
                     {cell.day}
                   </span>
                   {(dayTasks.length > 0 || dayMilestones.length > 0) && (
-                    <span className="text-[10px] font-mono text-[#777F79]">
+                    <span className="text-[10px] font-mono text-slate-400">
                       {dayTasks.length + dayMilestones.length}
                     </span>
                   )}
@@ -253,7 +253,7 @@ export function Calendar() {
                     <div
                       key={m.id}
                       onClick={() => setSelectedMilestone(m)}
-                      className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#A77B50]/15 text-[#A77B50] border border-[#A77B50]/30 truncate cursor-pointer hover:bg-[#A77B50]/25 transition-colors flex items-center gap-1"
+                      className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800/40 truncate cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors flex items-center gap-1"
                       title={`Milestone: ${m.name}`}
                     >
                       <Flag className="w-2.5 h-2.5 shrink-0" />
@@ -263,9 +263,9 @@ export function Calendar() {
 
                   {/* Tasks */}
                   {dayTasks.map(t => {
-                    let pillStyle = 'bg-[#657A6A]/15 text-[#657A6A] border-[#657A6A]/30';
-                    if (t.priority === 'Urgent') pillStyle = 'bg-[#C66C62]/15 text-[#C66C62] border-[#C66C62]/30';
-                    else if (t.status === 'Completed') pillStyle = 'bg-[#5D8068]/15 text-[#5D8068] border-[#5D8068]/30';
+                    let pillStyle = 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-600';
+                    if (t.priority === 'Urgent') pillStyle = 'bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-800/40';
+                    else if (t.status === 'Completed') pillStyle = 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/40';
 
                     return (
                       <div

@@ -27,35 +27,35 @@ export function ToastProvider({ children }) {
       <div className="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm pointer-events-none px-4 sm:px-0">
         {toasts.map(toast => {
           let Icon = CheckCircle2;
-          let iconColor = 'text-[#5D8068]';
-          let borderClass = 'border-l-4 border-l-[#5D8068]';
+          let iconColor = 'text-emerald-600 dark:text-emerald-400';
+          let borderClass = 'border-l-4 border-l-emerald-600';
 
           if (toast.type === 'error' || toast.type === 'danger') {
             Icon = AlertCircle;
-            iconColor = 'text-[#C66C62]';
-            borderClass = 'border-l-4 border-l-[#C66C62]';
+            iconColor = 'text-rose-600 dark:text-rose-400';
+            borderClass = 'border-l-4 border-l-rose-600';
           } else if (toast.type === 'warning') {
             Icon = AlertTriangle;
-            iconColor = 'text-[#C28D4E]';
-            borderClass = 'border-l-4 border-l-[#C28D4E]';
+            iconColor = 'text-amber-500 dark:text-amber-400';
+            borderClass = 'border-l-4 border-l-amber-500';
           } else if (toast.type === 'info') {
             Icon = Info;
-            iconColor = 'text-[#718B9A]';
-            borderClass = 'border-l-4 border-l-[#718B9A]';
+            iconColor = 'text-blue-600 dark:text-blue-400';
+            borderClass = 'border-l-4 border-l-blue-600';
           }
 
           return (
             <div
               key={toast.id}
-              className={`pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-white shadow-modal border border-[#E7E9E3] ${borderClass} transition-all duration-200 animate-in fade-in slide-in-from-bottom-2`}
+              className={`pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800 shadow-modal border border-slate-200 dark:border-slate-700 ${borderClass} transition-all duration-200 animate-in fade-in slide-in-from-bottom-2`}
             >
               <Icon className={`w-4 h-4 shrink-0 mt-0.5 ${iconColor}`} />
-              <div className="flex-1 text-xs font-medium text-[#242B27] leading-relaxed">
+              <div className="flex-1 text-xs font-medium text-slate-800 dark:text-slate-100 leading-relaxed">
                 {toast.message}
               </div>
               <button
                 onClick={() => removeToast(toast.id)}
-                className="text-[#777F79] hover:text-[#242B27] p-0.5 rounded transition-colors"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5 rounded transition-colors"
                 aria-label="Close"
               >
                 <X className="w-3.5 h-3.5" />

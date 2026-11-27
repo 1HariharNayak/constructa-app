@@ -23,17 +23,17 @@ export function TaskStatusChart({ tasks }) {
   const totalTasks = tasks.length;
 
   return (
-    <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs flex flex-col justify-between">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs flex flex-col justify-between">
       <div>
         <div className="flex items-center justify-between mb-1">
-          <h3 className="text-sm sm:text-base font-bold text-[#242B27]">
+          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
             Task Status Distribution
           </h3>
-          <span className="text-xs font-mono font-semibold bg-[#F6F6F2] text-[#242B27] px-2 py-0.5 rounded border border-[#E7E9E3]">
+          <span className="text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-600">
             {totalTasks} total
           </span>
         </div>
-        <p className="text-xs text-[#777F79]">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Deliverable workflow breakdown across active sites
         </p>
       </div>
@@ -47,12 +47,12 @@ export function TaskStatusChart({ tasks }) {
                   const item = payload[0].payload;
                   const pct = totalTasks > 0 ? Math.round((item.value / totalTasks) * 100) : 0;
                   return (
-                    <div className="bg-white p-2.5 rounded-lg border border-[#E7E9E3] shadow-md text-xs">
-                      <div className="font-semibold text-[#242B27] flex items-center gap-1.5">
+                    <div className="bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md text-xs">
+                      <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
                         {item.name}
                       </div>
-                      <div className="text-[#777F79] mt-1 font-mono">
+                      <div className="text-slate-500 dark:text-slate-400 mt-1 font-mono">
                         {item.value} deliverables ({pct}%)
                       </div>
                     </div>
@@ -74,7 +74,7 @@ export function TaskStatusChart({ tasks }) {
                 <Cell
                   key={`cell-${index}`}
                   fill={entry.color}
-                  stroke={isDark ? '#1C221F' : '#FFFFFF'}
+                  stroke={isDark ? '#1e293b' : '#FFFFFF'}
                   strokeWidth={2}
                 />
               ))}
@@ -84,22 +84,22 @@ export function TaskStatusChart({ tasks }) {
 
         {/* Center label */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <span className="text-2xl font-extrabold text-[#242B27] font-heading">
+          <span className="text-2xl font-bold text-slate-900 dark:text-white">
             {counts.Completed}
           </span>
-          <span className="text-[10px] uppercase font-bold text-[#777F79] tracking-wider">
+          <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
             Completed
           </span>
         </div>
       </div>
 
       {/* Legend */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-[#E7E9E3] text-xs">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/80 text-xs text-slate-600 dark:text-slate-400">
         {data.map((item) => (
           <div key={item.name} className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
-            <span className="text-[#777F79] truncate text-[11px]">{item.name}:</span>
-            <span className="font-semibold text-[#242B27] font-mono text-[11px]">{item.value}</span>
+            <span className="text-slate-500 dark:text-slate-400 truncate text-[11px]">{item.name}:</span>
+            <span className="font-semibold text-slate-900 dark:text-white font-mono text-[11px]">{item.value}</span>
           </div>
         ))}
       </div>

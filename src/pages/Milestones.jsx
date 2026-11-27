@@ -53,18 +53,18 @@ export function Milestones() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Critical Path Roadmap
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             Construction Milestones
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Coordinate major stage gates: Site Excavation, Foundation, CLT Framing, Curtain Walls, MEP Rough-Ins, and Handover.
           </p>
         </div>
@@ -85,15 +85,15 @@ export function Milestones() {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-3.5 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-[#777F79] absolute left-3 top-2.5 pointer-events-none" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search milestones or deliverable criteria..."
-            className="w-full pl-9 pr-3 py-1.5 text-xs text-[#242B27] bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="w-full pl-9 pr-3 py-1.5 text-xs text-slate-900 dark:text-white bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
 
@@ -101,7 +101,7 @@ export function Milestones() {
           <select
             value={projectFilter}
             onChange={(e) => setProjectFilter(e.target.value)}
-            className="p-1.5 text-xs text-[#242B27] bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 text-xs text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Projects</option>
             {projects.map(p => (
@@ -112,7 +112,7 @@ export function Milestones() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="p-1.5 text-xs text-[#242B27] bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 text-xs text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Statuses</option>
             <option value="In Progress">In Progress</option>

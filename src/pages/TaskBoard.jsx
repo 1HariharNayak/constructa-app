@@ -96,19 +96,19 @@ export function TaskBoard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Interactive Workflow
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight flex items-center gap-2.5">
-            <Kanban className="w-7 h-7 text-[#A77B50]" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2.5">
+            <Kanban className="w-7 h-7 text-blue-600 dark:text-blue-400" />
             Task Board
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Visual stage-gate workflow across active field tasks, inspections, and deliverables.
           </p>
         </div>
@@ -130,16 +130,16 @@ export function TaskBoard() {
       </div>
 
       {/* Control Bar: Filters & Search */}
-      <div className="bg-white rounded-xl border border-[#E7E9E3] p-4 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-4 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         {/* Search */}
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-[#777F79] absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search deliverables by code, title, or project..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs font-medium text-[#242B27] placeholder-[#777F79] focus:outline-none focus:ring-1 focus:ring-[#A77B50] focus:bg-white transition-all"
+            className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs font-medium text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white dark:focus:bg-slate-800 transition-all"
           />
         </div>
 
@@ -147,11 +147,11 @@ export function TaskBoard() {
         <div className="flex flex-wrap items-center gap-2.5">
           {/* Project filter */}
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-[#777F79] hidden sm:inline">Project:</span>
+            <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">Project:</span>
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="px-2.5 py-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs font-semibold text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="px-2.5 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="All">All Projects</option>
               {projects.map(p => (
@@ -162,11 +162,11 @@ export function TaskBoard() {
 
           {/* Priority filter */}
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-[#777F79] hidden sm:inline">Priority:</span>
+            <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">Priority:</span>
             <select
               value={priorityFilter}
               onChange={(e) => setPriorityFilter(e.target.value)}
-              className="px-2.5 py-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs font-semibold text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="px-2.5 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="All">All Priorities</option>
               <option value="Urgent">Urgent</option>
@@ -178,11 +178,11 @@ export function TaskBoard() {
 
           {/* Assignee filter */}
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-[#777F79] hidden sm:inline">Assignee:</span>
+            <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">Assignee:</span>
             <select
               value={employeeFilter}
               onChange={(e) => setEmployeeFilter(e.target.value)}
-              className="px-2.5 py-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs font-semibold text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="px-2.5 py-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="All">All Specialists</option>
               {employees.map(e => (

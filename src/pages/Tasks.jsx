@@ -125,18 +125,18 @@ export function Tasks() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Field Execution & Deliverables
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             Work Orders & Tasks
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Track site inspections, concrete pours, MEP balance runs, and structural certifications across all sites.
           </p>
         </div>
@@ -158,29 +158,29 @@ export function Tasks() {
       </div>
 
       {/* Control Bar: Search & Multi-Filters */}
-      <div className="p-4 bg-white rounded-xl border border-[#E7E9E3] shadow-xs space-y-3">
+      <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-3">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-[#777F79] absolute left-3 top-2.5 pointer-events-none" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search deliverables by ID, title, or project..."
-              className="w-full pl-9 pr-3 py-1.5 text-xs text-[#242B27] bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full pl-9 pr-3 py-1.5 text-xs text-slate-900 dark:text-white bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg focus:bg-white dark:focus:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
 
           {/* View Mode Toggle */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center bg-[#F6F6F2] p-0.5 rounded-lg border border-[#E7E9E3]">
+            <div className="flex items-center bg-slate-100 dark:bg-slate-700/60 p-0.5 rounded-lg border border-slate-200 dark:border-slate-600">
               <button
                 onClick={() => setViewMode('kanban')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                   viewMode === 'kanban'
-                    ? 'bg-white text-[#242B27] shadow-xs'
-                    : 'text-[#777F79] hover:text-[#242B27]'
+                    ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs font-semibold'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
@@ -188,10 +188,10 @@ export function Tasks() {
               </button>
               <button
                 onClick={() => setViewMode('table')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
                   viewMode === 'table'
-                    ? 'bg-white text-[#242B27] shadow-xs'
-                    : 'text-[#777F79] hover:text-[#242B27]'
+                    ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-xs font-semibold'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <List className="w-3.5 h-3.5" />
@@ -202,12 +202,12 @@ export function Tasks() {
         </div>
 
         {/* Filter Dropdowns row */}
-        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#E7E9E3] text-xs">
+        <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-700 text-xs">
           {/* Project Filter */}
           <select
             value={projectFilter}
             onChange={(e) => setProjectFilter(e.target.value)}
-            className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Projects</option>
             {projects.map(p => (
@@ -219,7 +219,7 @@ export function Tasks() {
           <select
             value={employeeFilter}
             onChange={(e) => setEmployeeFilter(e.target.value)}
-            className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Personnel</option>
             {employees.map(e => (
@@ -231,7 +231,7 @@ export function Tasks() {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Priorities</option>
             <option value="Urgent">Urgent</option>
@@ -244,7 +244,7 @@ export function Tasks() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-[#242B27] focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-600"
           >
             <option value="All">All Workflow States</option>
             <option value="Pending">Pending</option>
@@ -255,13 +255,13 @@ export function Tasks() {
           </select>
 
           {/* Sort By */}
-          <div className="ml-auto flex items-center gap-1.5 text-xs text-[#777F79]">
-            <ArrowUpDown className="w-3.5 h-3.5 text-[#A77B50]" />
+          <div className="ml-auto flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <ArrowUpDown className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Sort:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="p-1 bg-[#F6F6F2] border border-[#E7E9E3] rounded text-[#242B27] focus:outline-none"
+              className="p-1 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded text-slate-700 dark:text-slate-200 focus:outline-none"
             >
               <option value="dueDate">Due Date</option>
               <option value="priority">Priority</option>

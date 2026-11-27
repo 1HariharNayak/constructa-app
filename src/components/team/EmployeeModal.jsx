@@ -104,57 +104,57 @@ export function EmployeeModal({
         {/* Name & Email */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">
-              Full Name <span className="text-[#C66C62]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Full Name <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g. Gabriel Montgomery, PE"
-              className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50] ${
-                errors.name ? 'border-[#C66C62]' : 'border-[#E7E9E3]'
+              className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+                errors.name ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
               }`}
             />
-            {errors.name && <p className="text-[11px] text-[#C66C62]">{errors.name}</p>}
+            {errors.name && <p className="text-[11px] text-rose-500">{errors.name}</p>}
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">
-              Corporate Email <span className="text-[#C66C62]">*</span>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">
+              Corporate Email <span className="text-rose-500">*</span>
             </label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="g.montgomery@constructa.demo"
-              className={`w-full p-2.5 rounded-lg border bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50] ${
-                errors.email ? 'border-[#C66C62]' : 'border-[#E7E9E3]'
+              className={`w-full p-2.5 rounded-lg border bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600 ${
+                errors.email ? 'border-rose-400' : 'border-slate-200 dark:border-slate-600'
               }`}
             />
-            {errors.email && <p className="text-[11px] text-[#C66C62]">{errors.email}</p>}
+            {errors.email && <p className="text-[11px] text-rose-500">{errors.email}</p>}
           </div>
         </div>
 
         {/* Role & Department */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Designation / Job Title</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Designation / Job Title</label>
             <input
               type="text"
               value={formData.role}
               onChange={(e) => setFormData({ ...formData, role: e.target.value })}
               placeholder="e.g. Lead Geotechnical Engineer"
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Department</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Department</label>
             <select
               value={formData.department}
               onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Engineering">Engineering</option>
               <option value="Architecture & Design">Architecture & Design</option>
@@ -171,22 +171,22 @@ export function EmployeeModal({
         {/* Phone & Status */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Direct Contact Phone</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Direct Contact Phone</label>
             <input
               type="text"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               placeholder="+1 (555) 000-0000"
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white font-mono focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white font-mono focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="font-semibold text-[#242B27]">Operational Status</label>
+            <label className="font-semibold text-slate-800 dark:text-slate-200">Operational Status</label>
             <select
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-              className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Active">Active in Office</option>
               <option value="On Site">Deployed On Site</option>
@@ -197,10 +197,10 @@ export function EmployeeModal({
 
         {/* Assign Projects */}
         <div className="space-y-1.5">
-          <label className="font-semibold text-[#242B27]">
+          <label className="font-semibold text-slate-800 dark:text-slate-200">
             Assign Active Projects ({formData.assignedProjects.length} selected)
           </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-36 overflow-y-auto p-2 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-36 overflow-y-auto p-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
             {projects.map(proj => {
               const selected = formData.assignedProjects.includes(proj.id);
               return (
@@ -209,8 +209,8 @@ export function EmployeeModal({
                   onClick={() => toggleProject(proj.id)}
                   className={`p-2 rounded-md border flex items-center justify-between cursor-pointer transition-colors ${
                     selected
-                      ? 'border-[#A77B50] bg-[#A77B50]/10 text-[#242B27]'
-                      : 'border-[#E7E9E3] bg-white hover:border-[#D5D8CF] text-[#777F79]'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold'
+                      : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 text-slate-600 dark:text-slate-300'
                   }`}
                 >
                   <span className="font-medium truncate text-xs">{proj.name}</span>
@@ -223,13 +223,13 @@ export function EmployeeModal({
 
         {/* Bio */}
         <div className="space-y-1">
-          <label className="font-semibold text-[#242B27]">Professional Bio & Certifications</label>
+          <label className="font-semibold text-slate-800 dark:text-slate-200">Professional Bio & Certifications</label>
           <textarea
             rows={2}
             value={formData.bio}
             onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
             placeholder="Certifications (OSHA 30, PE, LEED AP), years of structural experience..."
-            className="w-full p-2.5 rounded-lg border border-[#E7E9E3] bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+            className="w-full p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 text-slate-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
           />
         </div>
       </form>
@@ -265,24 +265,24 @@ export function EmployeeDetailModal({
         </Button>
       }
     >
-      <div className="space-y-5 text-xs text-[#242B27]">
+      <div className="space-y-5 text-xs text-slate-900 dark:text-slate-100">
         {/* Profile Card Header */}
-        <div className="flex items-start gap-4 p-4 rounded-xl bg-[#F6F6F2] border border-[#E7E9E3]">
+        <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700">
           <img
             src={employee.avatar}
             alt={employee.name}
-            className="w-16 h-16 rounded-full object-cover ring-2 ring-[#E7E9E3] shrink-0"
+            className="w-16 h-16 rounded-full object-cover ring-2 ring-slate-200 dark:ring-slate-600 shrink-0"
           />
           <div className="space-y-1 min-w-0">
-            <h4 className="text-base font-bold text-[#242B27]">{employee.name}</h4>
-            <div className="text-xs text-[#777F79]">{employee.role}</div>
-            <div className="flex items-center gap-3 text-[11px] text-[#242B27] pt-1">
+            <h4 className="text-base font-bold text-slate-900 dark:text-white">{employee.name}</h4>
+            <div className="text-xs text-slate-500 dark:text-slate-400">{employee.role}</div>
+            <div className="flex items-center gap-3 text-[11px] text-slate-600 dark:text-slate-300 pt-1">
               <span>{employee.email}</span>
               <span>•</span>
               <span className="font-mono">{employee.phone}</span>
             </div>
             {employee.bio && (
-              <p className="text-xs text-[#777F79] pt-2 border-t border-[#E7E9E3] leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-700 leading-relaxed">
                 {employee.bio}
               </p>
             )}
@@ -291,17 +291,17 @@ export function EmployeeDetailModal({
 
         {/* Assigned Projects */}
         <div>
-          <h5 className="font-bold text-xs text-[#777F79] uppercase tracking-wider mb-2">
+          <h5 className="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">
             Assigned Projects ({assignedProjectsList.length})
           </h5>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {assignedProjectsList.map(p => (
-              <div key={p.id} className="p-3 rounded-lg border border-[#E7E9E3] bg-white">
-                <div className="font-bold text-[#242B27] truncate">{p.name}</div>
-                <div className="text-[11px] text-[#777F79] truncate">{p.location}</div>
+              <div key={p.id} className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                <div className="font-bold text-slate-900 dark:text-white truncate">{p.name}</div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">{p.location}</div>
                 <div className="mt-2 flex items-center justify-between text-[11px]">
-                  <span className="text-[#777F79]">Status: {p.status}</span>
-                  <span className="font-mono font-bold text-[#5D8068]">{p.progress}%</span>
+                  <span className="text-slate-500 dark:text-slate-400">Status: {p.status}</span>
+                  <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">{p.progress}%</span>
                 </div>
               </div>
             ))}
@@ -310,7 +310,7 @@ export function EmployeeDetailModal({
 
         {/* Assigned Tasks */}
         <div>
-          <h5 className="font-bold text-xs text-[#777F79] uppercase tracking-wider mb-2">
+          <h5 className="font-bold text-xs text-slate-400 uppercase tracking-wider mb-2">
             Work Orders & Assigned Deliverables ({empTasks.length})
           </h5>
           <div className="space-y-2 max-h-56 overflow-y-auto custom-scrollbar">
@@ -321,17 +321,17 @@ export function EmployeeDetailModal({
                   onClose();
                   if (onOpenTask) onOpenTask(t);
                 }}
-                className="p-2.5 rounded-lg border border-[#E7E9E3] bg-white hover:bg-[#F6F6F2] transition-colors cursor-pointer flex items-center justify-between text-xs"
+                className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer flex items-center justify-between text-xs"
               >
                 <div className="min-w-0 pr-2">
-                  <div className="font-bold text-[#242B27] truncate">{t.title}</div>
-                  <div className="text-[11px] text-[#777F79] truncate font-mono">
+                  <div className="font-bold text-slate-900 dark:text-white truncate">{t.title}</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate font-mono">
                     {t.id} • {t.projectName}
                   </div>
                 </div>
                 <div className="shrink-0 flex items-center gap-2">
-                  <span className="font-mono font-bold text-[#242B27]">{t.progress}%</span>
-                  <span className="text-[11px] px-2 py-0.5 rounded bg-[#F6F6F2] text-[#242B27] font-medium border border-[#E7E9E3]">
+                  <span className="font-mono font-bold text-slate-900 dark:text-white">{t.progress}%</span>
+                  <span className="text-[11px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium border border-slate-200 dark:border-slate-600">
                     {t.status}
                   </span>
                 </div>

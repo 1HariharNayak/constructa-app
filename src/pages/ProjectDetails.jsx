@@ -79,9 +79,9 @@ export function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="p-12 text-center bg-white rounded-xl border border-[#E7E9E3]">
-        <h2 className="text-lg font-bold text-[#242B27]">Project Not Found</h2>
-        <p className="text-xs text-[#777F79] mt-1 mb-4">The project with ID "{id}" does not exist.</p>
+      <div className="p-12 text-center bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">Project Not Found</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-4">The project with ID "{id}" does not exist.</p>
         <Button variant="primary" size="sm" onClick={() => navigate('/projects')}>
           Back to Projects
         </Button>
@@ -121,7 +121,7 @@ export function ProjectDetails() {
       <div>
         <button
           onClick={() => navigate('/projects')}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#777F79] hover:text-[#242B27] transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Projects Portfolio</span>
@@ -129,9 +129,9 @@ export function ProjectDetails() {
       </div>
 
       {/* Hero Workspace Header */}
-      <div className="bg-white rounded-xl border border-[#E7E9E3] shadow-xs overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs overflow-hidden">
         {/* Banner with Cover photo */}
-        <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-[#202824]">
+        <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-950">
           <img
             src={getProjectCoverImage(project)}
             alt={project.name}
@@ -141,14 +141,14 @@ export function ProjectDetails() {
             }}
             className="w-full h-full object-cover opacity-60"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#202824] via-[#202824]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
           {/* Top badges */}
           <div className="absolute top-4 left-4 flex items-center gap-2">
-            <span className="bg-[#202824]/80 backdrop-blur-xs text-white text-xs font-semibold px-2.5 py-1 rounded">
+            <span className="bg-slate-900/80 backdrop-blur-xs text-white text-xs font-semibold px-2.5 py-1 rounded">
               {project.type}
             </span>
-            <span className="bg-white/95 text-[#242B27] text-xs font-mono font-bold px-2 py-1 rounded shadow-2xs">
+            <span className="bg-white/95 text-slate-900 text-xs font-mono font-bold px-2 py-1 rounded shadow-2xs">
               {project.code}
             </span>
           </div>
@@ -158,7 +158,7 @@ export function ProjectDetails() {
             {canEditProject && (
               <button
                 onClick={() => setProjectEditModalOpen(true)}
-                className="p-1.5 rounded-lg bg-[#202824]/60 hover:bg-[#202824] text-white backdrop-blur-xs transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg bg-slate-900/60 hover:bg-slate-900 text-white backdrop-blur-xs transition-colors cursor-pointer"
                 title="Edit Project Charter"
               >
                 <Edit2 className="w-4 h-4" />
@@ -168,22 +168,22 @@ export function ProjectDetails() {
 
           {/* Title overlay */}
           <div className="absolute bottom-4 left-4 right-4 text-white">
-            <h1 className="text-xl sm:text-3xl font-extrabold font-heading tracking-tight drop-shadow-sm">
+            <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight drop-shadow-sm">
               {project.name}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-xs text-white/90 mt-1">
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-[#A77B50]" />
+                <MapPin className="w-3.5 h-3.5 text-blue-400" />
                 {project.location}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <User className="w-3.5 h-3.5 text-[#657A6A]" />
+                <User className="w-3.5 h-3.5 text-slate-300" />
                 Lead PM: <strong>{project.manager}</strong>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1 font-mono">
-                <Calendar className="w-3.5 h-3.5 text-[#C28D4E]" />
+                <Calendar className="w-3.5 h-3.5 text-blue-300" />
                 {project.startDate} to {project.endDate}
               </span>
             </div>
@@ -191,36 +191,36 @@ export function ProjectDetails() {
         </div>
 
         {/* Progress & Quick Metrics Bar */}
-        <div className="p-4 sm:p-5 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E7E9E3]">
+        <div className="p-4 sm:p-5 bg-white dark:bg-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 dark:border-slate-700/80">
           <div className="flex-1 max-w-md">
             <div className="flex items-center justify-between text-xs mb-1.5">
-              <span className="font-semibold text-[#242B27]">Overall Construction Completion</span>
-              <span className="font-mono font-bold text-base text-[#A77B50]">{project.progress}%</span>
+              <span className="font-semibold text-slate-900 dark:text-white">Overall Construction Completion</span>
+              <span className="font-mono font-bold text-base text-blue-600 dark:text-blue-400">{project.progress}%</span>
             </div>
-            <div className="w-full bg-[#E7E9E3] h-2.5 rounded-full overflow-hidden">
+            <div className="w-full bg-slate-100 dark:bg-slate-700 h-2.5 rounded-full overflow-hidden">
               <div
-                className="bg-[#A77B50] h-full rounded-full transition-all duration-500"
+                className="bg-blue-600 h-full rounded-full transition-all duration-500"
                 style={{ width: `${project.progress}%` }}
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-6 text-xs text-[#777F79] border-t sm:border-t-0 sm:border-l border-[#E7E9E3] pt-3 sm:pt-0 sm:pl-6">
+          <div className="flex items-center gap-6 text-xs text-slate-500 dark:text-slate-400 border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-slate-700 pt-3 sm:pt-0 sm:pl-6">
             <div>
-              <span className="block text-[10px] uppercase font-bold text-[#777F79]">Deliverables</span>
-              <span className="font-mono font-bold text-sm text-[#242B27]">
+              <span className="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Deliverables</span>
+              <span className="font-mono font-bold text-sm text-slate-900 dark:text-white">
                 {completedTasks}/{projectTasks.length} Done
               </span>
             </div>
             <div>
-              <span className="block text-[10px] uppercase font-bold text-[#777F79]">Milestones</span>
-              <span className="font-mono font-bold text-sm text-[#242B27]">
+              <span className="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Milestones</span>
+              <span className="font-mono font-bold text-sm text-slate-900 dark:text-white">
                 {projectMilestones.length} Phases
               </span>
             </div>
             <div>
-              <span className="block text-[10px] uppercase font-bold text-[#777F79]">Assigned Crew</span>
-              <span className="font-mono font-bold text-sm text-[#242B27]">
+              <span className="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Assigned Crew</span>
+              <span className="font-mono font-bold text-sm text-slate-900 dark:text-white">
                 {projectEmployees.length} Specialists
               </span>
             </div>
@@ -228,7 +228,7 @@ export function ProjectDetails() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="px-5 bg-white">
+        <div className="px-5 bg-white dark:bg-slate-800">
           <Tabs
             tabs={tabsConfig}
             activeTab={activeTab}
@@ -247,24 +247,24 @@ export function ProjectDetails() {
             {/* Left 2 Cols: Description, Milestones & Deadlines */}
             <div className="lg:col-span-2 space-y-6">
               {/* Description */}
-              <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
-                <h3 className="text-xs font-bold text-[#777F79] uppercase tracking-wider mb-2">
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
+                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
                   Project Specifications & Structural Details
                 </h3>
-                <p className="text-xs text-[#242B27] leading-relaxed">
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               {/* Milestones Progress */}
-              <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm sm:text-base font-bold text-[#242B27]">
+                  <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                     Milestone Progress Pipeline
                   </h3>
                   <button
                     onClick={() => setActiveTab('milestones')}
-                    className="text-xs font-semibold text-[#A77B50] hover:underline cursor-pointer"
+                    className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
                   >
                     View All Milestones →
                   </button>
@@ -272,24 +272,24 @@ export function ProjectDetails() {
 
                 <div className="space-y-3">
                   {projectMilestones.map(m => (
-                    <div key={m.id} className="p-3 rounded-lg border border-[#E7E9E3] bg-[#F6F6F2] text-xs">
+                    <div key={m.id} className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-xs">
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="font-bold text-[#242B27]">{m.name}</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{m.name}</span>
                         <div className="flex items-center gap-2">
-                          <span className="font-mono text-[11px] text-[#777F79]">Due {m.targetDate}</span>
+                          <span className="font-mono text-[11px] text-slate-500 dark:text-slate-400">Due {m.targetDate}</span>
                           <StatusBadge status={m.status} size="xs" />
                         </div>
                       </div>
-                      <div className="w-full bg-white h-1.5 rounded-full overflow-hidden border border-[#E7E9E3]">
+                      <div className="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#A77B50] h-full rounded-full"
+                          className="bg-blue-600 h-full rounded-full"
                           style={{ width: `${m.progress}%` }}
                         />
                       </div>
                     </div>
                   ))}
                   {projectMilestones.length === 0 && (
-                    <div className="text-xs text-[#777F79] italic">No milestones defined yet.</div>
+                    <div className="text-xs text-slate-400 italic">No milestones defined yet.</div>
                   )}
                 </div>
               </div>
@@ -300,12 +300,12 @@ export function ProjectDetails() {
               <TaskStatusChart tasks={projectTasks} />
 
               {/* Assigned Team Mini Card */}
-              <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
+              <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-bold text-[#242B27]">Assigned Crew</h3>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">Assigned Crew</h3>
                   <button
                     onClick={() => setActiveTab('team')}
-                    className="text-xs font-semibold text-[#A77B50] hover:underline cursor-pointer"
+                    className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
                   >
                     Manage ({projectEmployees.length})
                   </button>
@@ -315,12 +315,12 @@ export function ProjectDetails() {
                     <div
                       key={emp.id}
                       onClick={() => setSelectedEmployee(emp)}
-                      className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-[#F6F6F2] cursor-pointer transition-colors"
+                      className="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer transition-colors"
                     >
-                      <img src={emp.avatar} alt="" className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-[#E7E9E3]" />
+                      <img src={emp.avatar} alt="" className="w-8 h-8 rounded-full object-cover shrink-0 ring-1 ring-slate-200 dark:ring-slate-700" />
                       <div className="min-w-0">
-                        <div className="text-xs font-bold text-[#242B27] truncate">{emp.name}</div>
-                        <div className="text-[10px] text-[#777F79] truncate">{emp.role}</div>
+                        <div className="text-xs font-bold text-slate-900 dark:text-white truncate">{emp.name}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{emp.role}</div>
                       </div>
                     </div>
                   ))}
@@ -335,21 +335,21 @@ export function ProjectDetails() {
       {activeTab === 'tasks' && (
         <div className="space-y-4">
           {/* Controls Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
             <input
               type="text"
               value={taskSearch}
               onChange={(e) => setTaskSearch(e.target.value)}
               placeholder="Search deliverables in this project..."
-              className="p-2 text-xs bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg max-w-xs focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="p-2 text-xs bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg max-w-xs text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
 
             <div className="flex items-center gap-2">
-              <div className="flex items-center bg-[#F6F6F2] p-0.5 rounded-lg border border-[#E7E9E3]">
+              <div className="flex items-center bg-slate-100 dark:bg-slate-700 p-0.5 rounded-lg border border-slate-200 dark:border-slate-600">
                 <button
                   onClick={() => setTaskViewMode('kanban')}
                   className={`p-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
-                    taskViewMode === 'kanban' ? 'bg-white text-[#242B27] shadow-xs' : 'text-[#777F79]'
+                    taskViewMode === 'kanban' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-500 dark:text-slate-400'
                   }`}
                 >
                   Kanban
@@ -357,7 +357,7 @@ export function ProjectDetails() {
                 <button
                   onClick={() => setTaskViewMode('table')}
                   className={`p-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
-                    taskViewMode === 'table' ? 'bg-white text-[#242B27] shadow-xs' : 'text-[#777F79]'
+                    taskViewMode === 'table' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-500 dark:text-slate-400'
                   }`}
                 >
                   Table
@@ -408,10 +408,10 @@ export function ProjectDetails() {
       {/* Tab 3: Milestones */}
       {activeTab === 'milestones' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+          <div className="flex items-center justify-between p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
             <div>
-              <h3 className="text-sm font-bold text-[#242B27]">Project Milestones</h3>
-              <p className="text-xs text-[#777F79]">Key construction phases and target deadlines</p>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Project Milestones</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Key construction phases and target deadlines</p>
             </div>
             {canManageMilestones && (
               <Button
@@ -443,7 +443,7 @@ export function ProjectDetails() {
               />
             ))}
             {projectMilestones.length === 0 && (
-              <div className="col-span-3 text-center py-12 text-xs text-[#777F79] bg-white rounded-xl border border-dashed border-[#E7E9E3]">
+              <div className="col-span-3 text-center py-12 text-xs text-slate-400 bg-white dark:bg-slate-800 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
                 No milestones defined for this project.
               </div>
             )}
@@ -454,9 +454,9 @@ export function ProjectDetails() {
       {/* Tab 4: Team */}
       {activeTab === 'team' && (
         <div className="space-y-4">
-          <div className="p-3.5 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
-            <h3 className="text-sm font-bold text-[#242B27]">Staffing & Field Engineers</h3>
-            <p className="text-xs text-[#777F79]">Specialists assigned to {project.name}</p>
+          <div className="p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white">Staffing & Field Engineers</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Specialists assigned to {project.name}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -468,21 +468,21 @@ export function ProjectDetails() {
                 <div
                   key={emp.id}
                   onClick={() => setSelectedEmployee(emp)}
-                  className="bg-white rounded-xl border border-[#E7E9E3] p-4 hover:border-[#D5D8CF] shadow-xs transition-colors cursor-pointer"
+                  className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-4 hover:border-slate-300 dark:hover:border-slate-600 shadow-xs transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <img src={emp.avatar} alt="" className="w-10 h-10 rounded-full object-cover ring-1 ring-[#E7E9E3]" />
+                    <img src={emp.avatar} alt="" className="w-10 h-10 rounded-full object-cover ring-1 ring-slate-200 dark:ring-slate-700" />
                     <div className="min-w-0">
-                      <div className="text-sm font-bold text-[#242B27] truncate">{emp.name}</div>
-                      <div className="text-xs text-[#777F79] truncate">{emp.role}</div>
-                      <span className="text-[10px] font-semibold text-[#657A6A] bg-[#657A6A]/10 px-1.5 py-0.2 rounded mt-0.5 inline-block">
+                      <div className="text-sm font-bold text-slate-900 dark:text-white truncate">{emp.name}</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{emp.role}</div>
+                      <span className="text-[10px] font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-1.5 py-0.5 rounded mt-0.5 inline-block">
                         {emp.department}
                       </span>
                     </div>
                   </div>
 
-                  <div className="mt-3 pt-3 border-t border-[#E7E9E3] flex items-center justify-between text-xs text-[#777F79]">
-                    <span>Project Tasks: <strong className="text-[#242B27]">{doneCount}/{empTasks.length}</strong></span>
+                  <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/80 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                    <span>Project Tasks: <strong className="text-slate-900 dark:text-white">{doneCount}/{empTasks.length}</strong></span>
                     <span className="font-mono text-[11px]">{emp.phone}</span>
                   </div>
                 </div>
@@ -494,31 +494,31 @@ export function ProjectDetails() {
 
       {/* Tab 5: Activity */}
       {activeTab === 'activity' && (
-        <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
-          <h3 className="text-sm font-bold text-[#242B27] mb-4">
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-4">
             Project Event & Inspection Log
           </h3>
 
-          <div className="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#E7E9E3]">
+          <div className="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-700">
             {projectActivities.map(act => (
               <div key={act.id} className="relative text-xs">
-                <div className="absolute -left-6 top-1 w-2.5 h-2.5 rounded-full bg-[#A77B50] ring-4 ring-white" />
+                <div className="absolute -left-6 top-1 w-2.5 h-2.5 rounded-full bg-blue-600 ring-4 ring-white dark:ring-slate-800" />
                 <div className="flex items-baseline justify-between">
-                  <span className="font-bold text-[#242B27]">{act.user}</span>
-                  <span className="text-[10px] font-mono text-[#777F79]">{act.timestamp}</span>
+                  <span className="font-bold text-slate-900 dark:text-white">{act.user}</span>
+                  <span className="text-[10px] font-mono text-slate-400">{act.timestamp}</span>
                 </div>
-                <div className="text-[#242B27] mt-0.5">
-                  <span className="text-[#777F79]">{act.action}</span> <strong>{act.target}</strong>
+                <div className="text-slate-900 dark:text-white mt-0.5">
+                  <span className="text-slate-500 dark:text-slate-400">{act.action}</span> <strong>{act.target}</strong>
                 </div>
                 {act.detail && (
-                  <p className="text-[11px] text-[#777F79] mt-1 bg-[#F6F6F2] p-2 rounded border border-[#E7E9E3]">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1 bg-slate-50 dark:bg-slate-700/50 p-2 rounded border border-slate-200 dark:border-slate-700">
                     {act.detail}
                   </p>
                 )}
               </div>
             ))}
             {projectActivities.length === 0 && (
-              <div className="text-xs text-[#777F79] italic">No activity logged for this project yet.</div>
+              <div className="text-xs text-slate-400 italic">No activity logged for this project yet.</div>
             )}
           </div>
         </div>

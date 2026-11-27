@@ -37,8 +37,8 @@ export function Reports() {
   const [selectedProject, setSelectedProject] = useState('All');
   const [selectedRange, setSelectedRange] = useState('Quarter 4 (Current)');
 
-  const chartGrid = isDark ? '#2A332E' : '#E7E9E3';
-  const chartText = isDark ? '#9BA29C' : '#777F79';
+  const chartGrid = isDark ? '#334155' : '#E2E8F0';
+  const chartText = isDark ? '#94A3B8' : '#64748B';
 
   // Filter tasks if project selected
   const displayProjects = selectedProject === 'All'
@@ -83,18 +83,18 @@ export function Reports() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#A77B50]" />
-            <span className="text-[11px] font-semibold text-[#A77B50] uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
               Project Governance & Telemetry
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#242B27] font-heading tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
             Reports & Engineering Analytics
           </h1>
-          <p className="text-xs sm:text-sm text-[#777F79] mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Structural velocity, task completion throughput, and field milestone progress auditing.
           </p>
         </div>
@@ -128,14 +128,14 @@ export function Reports() {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-white rounded-xl border border-[#E7E9E3] shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-[#777F79] font-medium">Filter Project:</span>
+            <span className="text-slate-500 dark:text-slate-400 font-medium">Filter Project:</span>
             <select
               value={selectedProject}
               onChange={(e) => setSelectedProject(e.target.value)}
-              className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs text-[#242B27] font-semibold focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-700 dark:text-slate-200 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="All">All Portfolio Projects</option>
               {projects.map(p => (
@@ -145,11 +145,11 @@ export function Reports() {
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-[#777F79] font-medium">Date Range:</span>
+            <span className="text-slate-500 dark:text-slate-400 font-medium">Date Range:</span>
             <select
               value={selectedRange}
               onChange={(e) => setSelectedRange(e.target.value)}
-              className="p-1.5 bg-[#F6F6F2] border border-[#E7E9E3] rounded-lg text-xs text-[#242B27] font-semibold focus:outline-none focus:ring-1 focus:ring-[#A77B50]"
+              className="p-1.5 bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-700 dark:text-slate-200 font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600"
             >
               <option value="Quarter 4 (Current)">Quarter 4 (Current)</option>
               <option value="Quarter 3 (Q3 2026)">Quarter 3 (Q3 2026)</option>
@@ -159,45 +159,45 @@ export function Reports() {
           </div>
         </div>
 
-        <div className="text-xs text-[#777F79] font-mono">
+        <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
           Report Generated: <strong>Nov 26, 2026</strong>
         </div>
       </div>
 
       {/* KPI Overview Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl border border-[#E7E9E3] border-t-2 border-t-[#A77B50] p-4 shadow-xs">
-          <span className="text-[11px] uppercase font-bold text-[#777F79]">Portfolio Average Completion</span>
-          <div className="text-2xl font-extrabold text-[#242B27] font-heading mt-1">{avgProgress}%</div>
-          <p className="text-[11px] text-[#A77B50] font-medium mt-1">Across active construction sites</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 border-t-2 border-t-blue-600 p-4 shadow-xs">
+          <span className="text-[11px] uppercase font-bold text-slate-400">Portfolio Average Completion</span>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white mt-1">{avgProgress}%</div>
+          <p className="text-[11px] text-blue-600 dark:text-blue-400 font-medium mt-1">Across active construction sites</p>
         </div>
-        <div className="bg-white rounded-xl border border-[#E7E9E3] border-t-2 border-t-[#5D8068] p-4 shadow-xs">
-          <span className="text-[11px] uppercase font-bold text-[#777F79]">Deliverable Throughput</span>
-          <div className="text-2xl font-extrabold text-[#5D8068] font-heading mt-1">{completedTasks}/{totalTasks}</div>
-          <p className="text-[11px] text-[#777F79] mt-1">{Math.round((completedTasks/totalTasks)*100)}% certified complete</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 border-t-2 border-t-emerald-500 p-4 shadow-xs">
+          <span className="text-[11px] uppercase font-bold text-slate-400">Deliverable Throughput</span>
+          <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">{completedTasks}/{totalTasks}</div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">{Math.round((completedTasks/totalTasks)*100)}% certified complete</p>
         </div>
-        <div className="bg-white rounded-xl border border-[#E7E9E3] border-t-2 border-t-[#657A6A] p-4 shadow-xs">
-          <span className="text-[11px] uppercase font-bold text-[#777F79]">Active in Field</span>
-          <div className="text-2xl font-extrabold text-[#242B27] font-heading mt-1">{inProgressTasks}</div>
-          <p className="text-[11px] text-[#777F79] mt-1">Under inspection or assembly</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 border-t-2 border-t-blue-500 p-4 shadow-xs">
+          <span className="text-[11px] uppercase font-bold text-slate-400">Active in Field</span>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white mt-1">{inProgressTasks}</div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Under inspection or assembly</p>
         </div>
-        <div className="bg-white rounded-xl border border-[#E7E9E3] border-t-2 border-t-[#C66C62] p-4 shadow-xs">
-          <span className="text-[11px] uppercase font-bold text-[#777F79]">Active Delays / Blockers</span>
-          <div className="text-2xl font-extrabold text-[#C66C62] font-heading mt-1">{blockedTasks}</div>
-          <p className="text-[11px] text-[#C66C62] font-medium mt-1">Requiring supervisor clearance</p>
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 border-t-2 border-t-rose-500 p-4 shadow-xs">
+          <span className="text-[11px] uppercase font-bold text-slate-400">Active Delays / Blockers</span>
+          <div className="text-2xl font-bold text-rose-600 dark:text-rose-400 mt-1">{blockedTasks}</div>
+          <p className="text-[11px] text-rose-600 dark:text-rose-400 font-medium mt-1">Requiring supervisor clearance</p>
         </div>
       </div>
 
       {/* Charts Row 1: Project Progress Comparison & Employee Workload Throughput */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Project Comparison */}
-        <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-[#242B27]">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                 Project Completion Progress Comparison
               </h3>
-              <p className="text-xs text-[#777F79] mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Current structural stage completion ratio (%) by project code
               </p>
             </div>
@@ -214,12 +214,12 @@ export function Reports() {
                     if (active && payload && payload.length) {
                       const item = payload[0].payload;
                       return (
-                        <div className="bg-white p-3 rounded-lg border border-[#E7E9E3] shadow-md text-xs">
-                          <div className="font-bold text-[#242B27]">{item.fullName}</div>
-                          <div className="text-[#A77B50] font-bold mt-1">
+                        <div className="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md text-xs">
+                          <div className="font-bold text-slate-900 dark:text-white">{item.fullName}</div>
+                          <div className="text-blue-600 dark:text-blue-400 font-bold mt-1">
                             Progress: {item.progress}%
                           </div>
-                          <div className="text-[#777F79]">
+                          <div className="text-slate-500 dark:text-slate-400">
                             Total Deliverables: {item.tasksCount}
                           </div>
                         </div>
@@ -228,20 +228,20 @@ export function Reports() {
                     return null;
                   }}
                 />
-                <Bar dataKey="progress" fill="#A77B50" radius={[4, 4, 0, 0]} maxBarSize={34} />
+                <Bar dataKey="progress" fill="#2563EB" radius={[4, 4, 0, 0]} maxBarSize={34} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Employee Output & Workload Distribution */}
-        <div className="bg-white rounded-xl border border-[#E7E9E3] p-5 shadow-xs">
+        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-5 shadow-xs">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-[#242B27]">
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
                 Specialist Deliverable Throughput
               </h3>
-              <p className="text-xs text-[#777F79] mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Completed deliverables vs active work assignments per engineer
               </p>
             </div>
@@ -258,11 +258,11 @@ export function Reports() {
                     if (active && payload && payload.length) {
                       const item = payload[0].payload;
                       return (
-                        <div className="bg-white p-3 rounded-lg border border-[#E7E9E3] shadow-md text-xs space-y-1">
-                          <div className="font-bold text-[#242B27]">{item.fullName}</div>
-                          <div className="text-[11px] text-[#777F79]">{item.role}</div>
-                          <div className="text-[#5D8068] font-bold">Completed: {item.completed}</div>
-                          <div className="text-[#A77B50] font-medium">Active: {item.active}</div>
+                        <div className="bg-white dark:bg-slate-800 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md text-xs space-y-1">
+                          <div className="font-bold text-slate-900 dark:text-white">{item.fullName}</div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400">{item.role}</div>
+                          <div className="text-emerald-600 dark:text-emerald-400 font-bold">Completed: {item.completed}</div>
+                          <div className="text-blue-600 dark:text-blue-400 font-medium">Active: {item.active}</div>
                         </div>
                       );
                     }
@@ -270,8 +270,8 @@ export function Reports() {
                   }}
                 />
                 <Legend verticalAlign="top" align="right" iconType="circle" wrapperStyle={{ fontSize: '11px', paddingBottom: '10px' }} />
-                <Bar dataKey="completed" name="Completed" fill="#5D8068" stackId="a" radius={[0, 0, 0, 0]} maxBarSize={30} />
-                <Bar dataKey="active" name="In Progress" fill="#A77B50" stackId="a" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                <Bar dataKey="completed" name="Completed" fill="#10B981" stackId="a" radius={[0, 0, 0, 0]} maxBarSize={30} />
+                <Bar dataKey="active" name="In Progress" fill="#2563EB" stackId="a" radius={[4, 4, 0, 0]} maxBarSize={30} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -279,19 +279,19 @@ export function Reports() {
       </div>
 
       {/* Milestone Completion Status Table */}
-      <div className="bg-white rounded-xl border border-[#E7E9E3] shadow-xs overflow-hidden">
-        <div className="p-4 border-b border-[#E7E9E3] bg-[#F6F6F2] flex items-center justify-between">
-          <h3 className="text-sm font-bold text-[#242B27]">
+      <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs overflow-hidden">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 flex items-center justify-between">
+          <h3 className="text-sm font-bold text-slate-900 dark:text-white">
             Detailed Milestone Completion Audit Table
           </h3>
-          <span className="text-xs text-[#777F79] font-mono">
+          <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
             {milestones.length} Active Milestones
           </span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#F6F6F2] border-b border-[#E7E9E3] text-[#777F79] uppercase tracking-wider font-semibold">
+            <thead className="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
               <tr>
                 <th className="py-3 px-4">Milestone</th>
                 <th className="py-3 px-4">Project</th>
@@ -301,30 +301,30 @@ export function Reports() {
                 <th className="py-3 px-4">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E7E9E3]">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-700/80">
               {milestones.map(m => (
-                <tr key={m.id} className="hover:bg-[#F6F6F2]">
-                  <td className="py-3 px-4 font-bold text-[#242B27]">
+                <tr key={m.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                  <td className="py-3 px-4 font-semibold text-slate-900 dark:text-white">
                     {m.name}
                   </td>
-                  <td className="py-3 px-4 text-[#777F79]">
+                  <td className="py-3 px-4 text-slate-500 dark:text-slate-400">
                     {m.projectName}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#777F79]">
+                  <td className="py-3 px-4 font-mono text-slate-500 dark:text-slate-400">
                     {m.startDate}
                   </td>
-                  <td className="py-3 px-4 font-mono text-[#777F79]">
+                  <td className="py-3 px-4 font-mono text-slate-500 dark:text-slate-400">
                     {m.targetDate}
                   </td>
                   <td className="py-3 px-4 min-w-[120px]">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-[#E7E9E3] h-1.5 rounded-full overflow-hidden">
+                      <div className="flex-1 bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#A77B50] h-full rounded-full"
+                          className="bg-blue-600 dark:bg-blue-500 h-full rounded-full"
                           style={{ width: `${m.progress}%` }}
                         />
                       </div>
-                      <span className="font-mono font-bold text-[#242B27]">{m.progress}%</span>
+                      <span className="font-mono font-bold text-slate-900 dark:text-white">{m.progress}%</span>
                     </div>
                   </td>
                   <td className="py-3 px-4">

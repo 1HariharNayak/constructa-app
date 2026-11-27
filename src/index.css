@@ -1,310 +1,289 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
 
-  /* Architectural Warm Palette */
-  --color-constructa-bg: #F6F6F2;
-  --color-constructa-sidebar: #202824;
-  --color-constructa-sidebar-hover: #26312C;
-  --color-constructa-sidebar-active: #2C3832;
-  --color-constructa-bronze: #A77B50;
-  --color-constructa-bronze-hover: #926A42;
-  --color-constructa-bronze-light: #F3ECE5;
-  --color-constructa-sage: #657A6A;
-  --color-constructa-sage-light: #EBF0EC;
-  --color-constructa-card: #FFFFFF;
-  --color-constructa-text: #242B27;
-  --color-constructa-muted: #777F79;
-  --color-constructa-border: #E7E9E3;
-  --color-constructa-border-light: #F0F2EC;
-  --color-constructa-success: #5D8068;
-  --color-constructa-warning: #C28D4E;
-  --color-constructa-danger: #C66C62;
-  --color-constructa-info: #718B9A;
+  /* Vinayak Industries ERP Enterprise Blue & Slate Palette */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
+
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-border: #1e293b;
+  --color-sidebar-hover: rgba(255, 255, 255, 0.08);
+  --color-sidebar-active: #2563eb;
 }
 
 :root {
   color-scheme: light;
-  --app-bg: #F6F6F2;
-  --app-card: #FFFFFF;
-  --app-text: #242B27;
-  --app-muted: #777F79;
-  --app-border: #E7E9E3;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
 }
 
 html.dark {
   color-scheme: dark;
-  --app-bg: #141816;
-  --app-card: #1C221F;
-  --app-text: #EDEDEA;
-  --app-muted: #9BA29C;
-  --app-border: #2A332E;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: #334155;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #F6F6F2;
-  color: #242B27;
+  background-color: var(--background);
+  color: var(--foreground);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 html.dark body {
-  background-color: #141816;
-  color: #EDEDEA;
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: var(--font-heading);
-  letter-spacing: -0.015em;
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
 }
 
-/* Custom scrollbars matching architectural drafting table feel */
+/* ERP Subtle Clean Scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F6F2;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D7DAD2;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B9BEB3;
+  background: #94a3b8;
 }
 
-html.dark ::-webkit-scrollbar-track {
-  background: #141816;
-}
 html.dark ::-webkit-scrollbar-thumb {
-  background: #2D3731;
+  background: #334155;
 }
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #3D4A43;
-}
-
-/* Enterprise Card Elevation */
-.constructa-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E7E9E3;
-  box-shadow: 0 1px 3px 0 rgba(36, 43, 39, 0.03), 0 1px 2px -1px rgba(36, 43, 39, 0.02);
-  border-radius: 0.75rem;
-}
-
-.constructa-card-hover {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.constructa-card-hover:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px 0 rgba(36, 43, 39, 0.05), 0 2px 4px -1px rgba(36, 43, 39, 0.03);
-  border-color: #D3D8CE;
-}
-
-html.dark .constructa-card {
-  background-color: #1C221F;
-  border-color: #2A332E;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
-}
-
-html.dark .constructa-card-hover:hover {
-  border-color: #3D4C44;
-  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  background: #475569;
 }
 
 /* ==========================================================================
-   ARCHITECTURAL DARK THEME OVERRIDES
-   Rich charcoal slate, deep bronze highlights, illuminated forest green accents
+   VINAYAK INDUSTRIES ERP THEME OVERRIDES & COMPATIBILITY
+   Neutral Slate surfaces, Crisp Enterprise Blue, Clean Border Radii
    ========================================================================== */
 
-/* Surfaces */
-html.dark .bg-white {
-  background-color: #1C221F !important;
+/* Page Backgrounds */
+.bg-\[\#F6F6F2\] {
+  background-color: #f8fafc !important;
 }
-
-html.dark header.bg-white {
-  background-color: #171C1A !important;
-  border-color: #2A332E !important;
-}
-
 html.dark .bg-\[\#F6F6F2\] {
-  background-color: #141816 !important;
+  background-color: #0f172a !important;
 }
 
-/* Nested containers inside cards */
-html.dark .bg-white .bg-\[\#F6F6F2\],
-html.dark div.rounded-xl .bg-\[\#F6F6F2\],
-html.dark div.rounded-lg .bg-\[\#F6F6F2\] {
-  background-color: #232B27 !important;
+/* Card Surfaces */
+.bg-white {
+  background-color: #ffffff !important;
+}
+html.dark .bg-white {
+  background-color: #1e293b !important;
 }
 
-html.dark .bg-\[\#FAF9F6\] {
-  background-color: #212824 !important;
+/* Text Overrides */
+.text-\[\#242B27\],
+.text-\[\#252821\] {
+  color: #0f172a !important;
 }
-
-html.dark .bg-\[\#F0F2EC\],
-html.dark .bg-\[\#EBF0EC\] {
-  background-color: #232C28 !important;
-}
-
-html.dark .bg-\[\#F3ECE5\],
-html.dark .bg-\[\#FBF4EC\] {
-  background-color: #2D2319 !important;
-}
-
-/* Text */
 html.dark .text-\[\#242B27\],
 html.dark .text-\[\#252821\] {
-  color: #EDEDEA !important;
+  color: #f8fafc !important;
 }
 
+.text-\[\#777F79\],
+.text-\[\#8E9690\],
+.text-\[\#636C65\] {
+  color: #64748b !important;
+}
 html.dark .text-\[\#777F79\],
 html.dark .text-\[\#8E9690\],
-html.dark .text-\[\#77786F\] {
-  color: #9BA29C !important;
+html.dark .text-\[\#636C65\] {
+  color: #94a3b8 !important;
 }
 
-/* Borders */
+/* Border Overrides */
+.border-\[\#E7E9E3\],
+.border-\[\#F0F2EC\],
+.border-\[\#D5D8CF\],
+.border-\[\#E9E7DF\] {
+  border-color: #e2e8f0 !important;
+}
 html.dark .border-\[\#E7E9E3\],
-html.dark .border-\[\#E9E7DF\] {
-  border-color: #2A332E !important;
-}
-
-html.dark .border-\[\#F0F2EC\] {
-  border-color: #242D28 !important;
-}
-
+html.dark .border-\[\#F0F2EC\],
 html.dark .border-\[\#D5D8CF\],
-html.dark .border-\[\#D7DAD2\] {
-  border-color: #38453E !important;
+html.dark .border-\[\#E9E7DF\] {
+  border-color: #334155 !important;
 }
 
+.divide-\[\#E7E9E3\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
 html.dark .divide-\[\#E7E9E3\] > :not([hidden]) ~ :not([hidden]) {
-  border-color: #2A332E !important;
+  border-color: #334155 !important;
 }
 
-/* Interactive & Forms */
+/* Brand Bronze -> Enterprise Blue Transformation */
+.text-\[\#A77B50\],
+.text-\[\#8E653E\],
+.text-\[\#926A42\] {
+  color: #2563eb !important;
+}
+html.dark .text-\[\#A77B50\],
+html.dark .text-\[\#8E653E\],
+html.dark .text-\[\#926A42\] {
+  color: #60a5fa !important;
+}
+
+.bg-\[\#A77B50\] {
+  background-color: #2563eb !important;
+}
+.hover\:bg-\[\#926A42\]:hover,
+.hover\:bg-\[\#8E653E\]:hover {
+  background-color: #1d4ed8 !important;
+}
+
+.border-\[\#A77B50\] {
+  border-color: #2563eb !important;
+}
+
+.bg-\[\#A77B50\]\/10,
+.bg-\[\#F3ECE5\] {
+  background-color: #eff6ff !important;
+}
+html.dark .bg-\[\#A77B50\]\/10,
+html.dark .bg-\[\#F3ECE5\] {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Sage Green -> Enterprise Slate / Muted */
+.text-\[\#657A6A\] {
+  color: #475569 !important;
+}
+html.dark .text-\[\#657A6A\] {
+  color: #94a3b8 !important;
+}
+
+.bg-\[\#657A6A\] {
+  background-color: #475569 !important;
+}
+
+.bg-\[\#EBF0EC\] {
+  background-color: #f1f5f9 !important;
+}
+html.dark .bg-\[\#EBF0EC\] {
+  background-color: #334155 !important;
+}
+
+/* Form inputs & controls */
+input, select, textarea {
+  border-color: #e2e8f0;
+  border-radius: 0.5rem;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #2563eb !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15) !important;
+}
+
 html.dark input,
 html.dark select,
 html.dark textarea {
-  background-color: #171D1A !important;
-  color: #EDEDEA !important;
-  border-color: #2C3631 !important;
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
 }
-
 html.dark input:focus,
 html.dark select:focus,
 html.dark textarea:focus {
-  background-color: #1B221F !important;
-  border-color: #C29567 !important;
-  box-shadow: 0 0 0 1px #C29567 !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
 }
 
-html.dark input::placeholder,
-html.dark textarea::placeholder {
-  color: #6A736E !important;
+/* Topbar Header */
+header {
+  border-bottom-color: #e2e8f0 !important;
+}
+html.dark header {
+  background-color: #0f172a !important;
+  border-bottom-color: #1e293b !important;
 }
 
-/* Buttons in dark mode */
-html.dark button.bg-\[\#F6F6F2\] {
-  background-color: #222926 !important;
-  border-color: #2E3832 !important;
-  color: #EDEDEA !important;
+/* Sidebar Dark Slate Theme */
+aside,
+.bg-\[\#202824\] {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
 }
-
-html.dark button.bg-\[\#F6F6F2\]:hover {
-  background-color: #2A332F !important;
-  border-color: #3D4A42 !important;
-}
-
-/* Dropdowns & Popovers */
-html.dark .shadow-xs,
-html.dark .shadow-sm {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3) !important;
-}
-
-html.dark .shadow-md,
-html.dark .shadow-lg,
-html.dark .shadow-xl,
-html.dark .shadow-2xl {
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.6), 0 4px 8px -2px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* Tables */
-html.dark tr.hover\:bg-\[\#FAF9F6\]:hover,
-html.dark tr.hover\:bg-\[\#F6F6F2\]:hover {
-  background-color: #232B27 !important;
-}
-
-html.dark th.bg-\[\#FAF9F6\],
-html.dark th.bg-\[\#F6F6F2\] {
-  background-color: #1A201D !important;
-  color: #9BA29C !important;
-}
-
-/* Dark Sidebar fine-tuning */
 html.dark aside,
 html.dark .bg-\[\#202824\] {
-  background-color: #111513 !important;
-  border-color: #1E2521 !important;
+  background-color: #090d16 !important;
+  border-color: #1e293b !important;
 }
 
-html.dark aside .border-\[\#2A342F\] {
-  border-color: #1C231F !important;
+aside .border-\[\#2A342F\] {
+  border-color: #1e293b !important;
 }
 
-html.dark aside .hover\:bg-\[\#26312C\]:hover {
-  background-color: #181E1B !important;
+/* Table styling */
+thead th {
+  background-color: #f8fafc !important;
+  color: #64748b !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+html.dark thead th {
+  background-color: #1e293b !important;
+  color: #94a3b8 !important;
+  border-bottom: 1px solid #334155 !important;
 }
 
-html.dark aside .bg-\[\#2C3832\] {
-  background-color: #1E2622 !important;
+tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+html.dark tbody tr:hover {
+  background-color: #334155/30 !important;
 }
 
-/* Badges and status pills illumination */
-html.dark .bg-\[\#5D8068\]\/10,
-html.dark .bg-emerald-50 {
-  background-color: rgba(93, 128, 104, 0.16) !important;
+/* Modals & Popovers */
+.shadow-xs {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
-html.dark .text-\[\#5D8068\] {
-  color: #7BB58C !important;
-}
-
-html.dark .bg-\[\#A77B50\]\/10,
-html.dark .bg-amber-50 {
-  background-color: rgba(167, 123, 80, 0.16) !important;
-}
-html.dark .text-\[\#A77B50\] {
-  color: #D3A77C !important;
-}
-
-html.dark .bg-\[\#C66C62\]\/10,
-html.dark .bg-red-50 {
-  background-color: rgba(198, 108, 98, 0.16) !important;
-}
-html.dark .text-\[\#C66C62\],
-html.dark .text-\[\#C96B5D\] {
-  color: #E68A80 !important;
-}
-
-html.dark .bg-\[\#718B9A\]\/10,
-html.dark .bg-blue-50 {
-  background-color: rgba(113, 139, 154, 0.16) !important;
-}
-html.dark .text-\[\#718B9A\] {
-  color: #92B4C8 !important;
-}
-
-/* Modal and Drawer overlays */
-html.dark .bg-black\/50,
-html.dark .bg-\[\#202824\]\/60 {
-  background-color: rgba(10, 13, 11, 0.75) !important;
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
 }

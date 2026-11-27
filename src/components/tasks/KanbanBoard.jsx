@@ -80,7 +80,7 @@ export function KanbanBoard({
               {onCreateTaskInColumn && (
                 <button
                   onClick={() => onCreateTaskInColumn(col.id)}
-                  className="p-1 rounded text-[#777F79] hover:text-[#242B27] dark:hover:text-[#EDEDEA] hover:bg-white/80 dark:hover:bg-[#232B27] transition-colors cursor-pointer"
+                  className="p-1 rounded text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white/80 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title={`Add deliverable to ${col.label}`}
                 >
                   <Plus className="w-3.5 h-3.5" />
@@ -101,7 +101,7 @@ export function KanbanBoard({
               ))}
 
               {columnTasks.length === 0 && (
-                <div className="flex items-center justify-center h-24 border border-dashed border-[#D5D8CF] rounded-lg text-center p-3 text-[11px] text-[#777F79]">
+                <div className="flex items-center justify-center h-24 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg text-center p-3 text-[11px] text-slate-400">
                   Drag work orders here
                 </div>
               )}

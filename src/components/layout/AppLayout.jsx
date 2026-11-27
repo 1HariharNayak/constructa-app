@@ -12,7 +12,7 @@ export function AppLayout() {
   const [helpOpen, setHelpOpen] = useState(false);
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#F6F6F2] text-[#242B27]">
+    <div className="flex h-screen w-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans">
       {/* Desktop Sidebar */}
       <div className="hidden md:flex shrink-0 h-full">
         <Sidebar
@@ -26,10 +26,10 @@ export function AppLayout() {
       {mobileSidebarOpen && (
         <div className="fixed inset-0 z-50 flex md:hidden">
           <div
-            className="fixed inset-0 bg-[#202824]/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"
             onClick={() => setMobileSidebarOpen(false)}
           />
-          <div className="relative flex flex-col w-72 max-w-[80vw] bg-[#202824] z-10 shadow-2xl">
+          <div className="relative flex flex-col w-72 max-w-[80vw] bg-slate-900 z-10 shadow-2xl">
             <Sidebar
               collapsed={false}
               onToggleCollapse={() => setMobileSidebarOpen(false)}

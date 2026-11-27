@@ -10,9 +10,9 @@ export function Breadcrumbs() {
 
   if (pathnames.length === 0) {
     return (
-      <div className="flex items-center text-xs text-[#777F79] font-medium">
-        <span className="flex items-center gap-1.5 text-[#242B27]">
-          <Home className="w-3.5 h-3.5 text-[#A77B50]" />
+      <div className="flex items-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <span className="flex items-center gap-1.5 text-slate-900 dark:text-white">
+          <Home className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
           <span>Dashboard Overview</span>
         </span>
       </div>
@@ -41,13 +41,13 @@ export function Breadcrumbs() {
   };
 
   return (
-    <nav className="flex items-center text-xs text-[#777F79] font-medium space-x-1.5 overflow-hidden">
+    <nav className="flex items-center text-xs text-slate-500 dark:text-slate-400 font-medium space-x-1.5 overflow-hidden">
       <Link
         to="/"
-        className="flex items-center gap-1 hover:text-[#242B27] transition-colors shrink-0"
+        className="flex items-center gap-1 hover:text-slate-900 dark:hover:text-white transition-colors shrink-0"
         title="Dashboard"
       >
-        <Home className="w-3.5 h-3.5 text-[#777F79] hover:text-[#A77B50]" />
+        <Home className="w-3.5 h-3.5 text-slate-400 hover:text-blue-600" />
       </Link>
       {pathnames.map((segment, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
@@ -56,15 +56,15 @@ export function Breadcrumbs() {
 
         return (
           <React.Fragment key={routeTo}>
-            <ChevronRight className="w-3.5 h-3.5 text-[#B8BBB4] shrink-0" />
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
             {isLast ? (
-              <span className="text-[#242B27] font-semibold truncate max-w-[200px] sm:max-w-xs">
+              <span className="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-xs">
                 {label}
               </span>
             ) : (
               <Link
                 to={routeTo}
-                className="hover:text-[#242B27] hover:text-[#A77B50] transition-colors truncate shrink-0"
+                className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate shrink-0"
               >
                 {label}
               </Link>
