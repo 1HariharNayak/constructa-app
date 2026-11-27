@@ -1,0 +1,64 @@
+import React from 'react';
+import { Modal } from './Modal';
+import { Button } from './Button';
+import { AlertTriangle, AlertCircle, HelpCircle } from 'lucide-react';
+
+export function ConfirmDialog({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  message,
+  confirmText = 'Confirm',
+  cancelText = 'Cancel',
+  type = 'danger',
+  isLoading = false
+}) {
+  let Icon = AlertTriangle;
+  let iconBg = 'bg-[#FBF4EC] text-[#C28D4E]';
+  let confirmVariant = 'primary';
+
+  if (type === 'danger') {
+    Icon = AlertCircle;
+    iconBg = 'bg-[#F9ECEB] text-[#C66C62]';
+    confirmVariant = 'danger';
+  } else if (type === 'warning') {
+    Icon = AlertTriangle;
+    iconBg = 'bg-[#FBF4EC] text-[#C28D4E]';
+    confirmVariant = 'primary';
+  } else {
+    Icon = HelpCircle;
+    iconBg = 'bg-[#EEF2F5] text-[#718B9A]';
+    confirmVariant = 'secondary';
+  }
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title={title} maxWidth="max-w-md">
+      <div className="flex gap-4">
+        <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${iconBg}`}>
+          <Icon className="w-4 h-4" />
+        </div>
+        <div className="flex-1">
+          <p className="text-xs text-[#242B27] leading-relaxed">{message}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex justify-end gap-2.5 pt-3.5 border-t border-[#F0F2EC]">
+        <Button variant="outline" size="xs" onClick={onClose} disabled={isLoading}>
+          {cancelText}
+        </Button>
+        <Button
+          variant={confirmVariant}
+          size="xs"
+          onClick={() => {
+            onConfirm();
+            onClose();
+          }}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Processing...' : confirmText}
+        </Button>
+      </div>
+    </Modal>
+  );
+}

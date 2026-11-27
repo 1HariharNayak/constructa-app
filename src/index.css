@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
+
+  /* Architectural Warm Palette */
+  --color-constructa-bg: #F6F6F2;
+  --color-constructa-sidebar: #202824;
+  --color-constructa-sidebar-hover: #26312C;
+  --color-constructa-sidebar-active: #2C3832;
+  --color-constructa-bronze: #A77B50;
+  --color-constructa-bronze-hover: #926A42;
+  --color-constructa-bronze-light: #F3ECE5;
+  --color-constructa-sage: #657A6A;
+  --color-constructa-sage-light: #EBF0EC;
+  --color-constructa-card: #FFFFFF;
+  --color-constructa-text: #242B27;
+  --color-constructa-muted: #777F79;
+  --color-constructa-border: #E7E9E3;
+  --color-constructa-border-light: #F0F2EC;
+  --color-constructa-success: #5D8068;
+  --color-constructa-warning: #C28D4E;
+  --color-constructa-danger: #C66C62;
+  --color-constructa-info: #718B9A;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F6F6F2;
+  color: #242B27;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+}
+
+/* Custom scrollbars matching architectural drafting table feel */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F6F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D7DAD2;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B9BEB3;
+}
+
+/* Enterprise Card Elevation */
+.constructa-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E7E9E3;
+  box-shadow: 0 1px 3px 0 rgba(36, 43, 39, 0.03), 0 1px 2px -1px rgba(36, 43, 39, 0.02);
+  border-radius: 0.75rem;
+}
+
+.constructa-card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.constructa-card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px 0 rgba(36, 43, 39, 0.05), 0 2px 4px -1px rgba(36, 43, 39, 0.03);
+  border-color: #D3D8CE;
+}
