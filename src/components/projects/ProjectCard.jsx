@@ -35,43 +35,45 @@ export function ProjectCard({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-90" />
 
-          {/* Type & Code Badges */}
-          <div className="absolute top-3 left-3 flex items-center gap-1.5">
-            <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded shadow-xs">
+          {/* Top Badges Bar: Left (Type), Right (Status & Actions) */}
+          <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+            <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-semibold px-2 py-0.5 rounded shadow-xs truncate">
               {project.type || 'Commercial'}
             </span>
-            <span className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xs text-slate-900 dark:text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded shadow-xs">
-              {project.code}
-            </span>
+
+            <div className="flex items-center gap-1 shrink-0 pointer-events-auto">
+              <StatusBadge status={project.status} size="xs" />
+              {canManage && (
+                <div
+                  className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center bg-white/95 dark:bg-slate-800/95 rounded-md p-0.5 ml-1 shadow-xs"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    onClick={() => onEdit(project)}
+                    className="p-1 hover:text-blue-600 text-slate-400 transition-colors"
+                    title="Edit Project Charter"
+                  >
+                    <Edit2 className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    onClick={() => onDelete(project.id)}
+                    className="p-1 hover:text-rose-600 text-slate-400 transition-colors"
+                    title="Delete Project"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div className="absolute top-3 right-3 flex items-center gap-1">
-            <StatusBadge status={project.status} size="xs" />
-            {canManage && (
-              <div
-                className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center bg-white/95 dark:bg-slate-800/95 rounded-md p-0.5 ml-1 shadow-xs"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => onEdit(project)}
-                  className="p-1 hover:text-blue-600 text-slate-400 transition-colors"
-                  title="Edit Project Charter"
-                >
-                  <Edit2 className="w-3.5 h-3.5" />
-                </button>
-                <button
-                  onClick={() => onDelete(project.id)}
-                  className="p-1 hover:text-rose-600 text-slate-400 transition-colors"
-                  title="Delete Project"
-                >
-                  <Trash2 className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Project Title overlay on bottom of image */}
+          {/* Project Title & Code overlay on bottom of image */}
           <div className="absolute bottom-3 left-3 right-3 text-white">
+            <div className="flex items-center gap-1.5 mb-1">
+              <span className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-xs text-slate-900 dark:text-white text-[10px] font-mono font-bold px-1.5 py-0.5 rounded shadow-xs">
+                {project.code}
+              </span>
+            </div>
             <h3 className="text-base font-bold line-clamp-1 leading-snug drop-shadow-xs">
               {project.name}
             </h3>
