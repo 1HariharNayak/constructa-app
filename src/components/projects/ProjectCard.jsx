@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, User, Calendar, CheckSquare, Edit2, Trash2 } from 'lucide-react';
 import { StatusBadge } from '../common/Badge';
+import { getProjectCoverImage, ARCHITECTURAL_BLUEPRINT_SVG } from '../../utils/projectImages';
 
 export function ProjectCard({
   project,
@@ -22,13 +23,13 @@ export function ProjectCard({
     >
       <div>
         {/* Cover Photo Banner */}
-        <div className="relative h-44 w-full overflow-hidden bg-[#F6F6F2]">
+        <div className="relative h-44 w-full overflow-hidden bg-[#1C2420]">
           <img
-            src={project.coverImage}
+            src={getProjectCoverImage(project)}
             alt={project.name}
             onError={(e) => {
               e.currentTarget.onerror = null;
-              e.currentTarget.src = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80';
+              e.currentTarget.src = ARCHITECTURAL_BLUEPRINT_SVG;
             }}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

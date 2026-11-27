@@ -9,6 +9,7 @@ import {
 } from '../data/mockData';
 import { useAuth } from './AuthContext';
 import { useToast } from './ToastContext';
+import { getProjectCoverImage } from '../utils/projectImages';
 
 const DataContext = createContext(null);
 const STORAGE_PREFIX = 'constructa_v3_';
@@ -29,7 +30,13 @@ export function DataProvider({ children }) {
     return fallback;
   };
 
-  const [rawProjects, setRawProjects] = useState(() => loadInitial('projects', INITIAL_PROJECTS));
+  const [rawProjects, setRawProjects] = useState(() => {
+    const loaded = loadInitial('projects', INITIAL_PROJECTS);
+    return loaded.map(p => ({
+      ...p,
+      coverImage: p.coverImage || getProjectCoverImage(p)
+    }));
+  });
   const [tasks, setTasks] = useState(() => loadInitial('tasks', INITIAL_TASKS));
   const [milestones, setMilestones] = useState(() => loadInitial('milestones', INITIAL_MILESTONES));
   const [employees, setEmployees] = useState(() => loadInitial('employees', INITIAL_EMPLOYEES));
@@ -119,7 +126,8 @@ export function DataProvider({ children }) {
       code: projectData.code || `CSA/AR/2026-27/0${rawProjects.length + 1}`,
       progress: 0,
       status: projectData.status || 'Active',
-      team: projectData.team || [currentUser?.id || 'emp-1']
+      team: projectData.team || [currentUser?.id || 'emp-1'],
+      coverImage: projectData.coverImage || getProjectCoverImage(projectData)
     };
     setRawProjects(prev => [newProj, ...prev]);
     logActivity('created new project', 'project', newProj.name, newProj.name, newProj.id);

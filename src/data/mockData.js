@@ -218,6 +218,7 @@ export const INITIAL_PROJECTS = [
     progress: 74,
     budget: '$14.2M',
     area: '340,000 sq ft',
+    coverImage: 'https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=800&auto=format&fit=crop&q=80',
     description: 'Multi-level commercial mall featuring 120 retail spaces, multiplex cinema halls, basement double-stack parking, and grand central atrium skylight.',
     team: ['emp-2', 'emp-3', 'emp-4', 'emp-6', 'emp-7', 'emp-8', 'emp-10']
   },
@@ -236,6 +237,7 @@ export const INITIAL_PROJECTS = [
     progress: 32,
     budget: '$9.8M',
     area: '190,000 sq ft',
+    coverImage: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?w=800&auto=format&fit=crop&q=80',
     description: 'Extension wing encompassing luxury lifestyle anchor brands, rooftop food court, entertainment zone, and dedicated logistics loading bays.',
     team: ['emp-2', 'emp-3', 'emp-4', 'emp-5', 'emp-6']
   },
@@ -254,6 +256,7 @@ export const INITIAL_PROJECTS = [
     progress: 88,
     budget: '$780K',
     area: '6,800 sq ft',
+    coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
     description: 'Contemporary 4-BHK duplex bungalow designed with climate-responsive courtyard, terracotta louvers, cantilevered balconies, and solar integration.',
     team: ['emp-1', 'emp-4', 'emp-5', 'emp-8', 'emp-11']
   },
@@ -272,6 +275,7 @@ export const INITIAL_PROJECTS = [
     progress: 65,
     budget: '$950K',
     area: '8,200 sq ft',
+    coverImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&auto=format&fit=crop&q=80',
     description: 'Luxury Mediterranean-inspired villa featuring double-height drawing room, landscaped terrace garden, plunge pool, and intricate jaali brickwork.',
     team: ['emp-1', 'emp-3', 'emp-5', 'emp-8', 'emp-9']
   },

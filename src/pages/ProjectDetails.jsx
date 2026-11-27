@@ -28,6 +28,7 @@ import { MilestoneCard } from '../components/milestones/MilestoneCard';
 import { MilestoneModal } from '../components/milestones/MilestoneModal';
 import { ProjectModal } from '../components/projects/ProjectModal';
 import { EmployeeDetailModal } from '../components/team/EmployeeModal';
+import { getProjectCoverImage, ARCHITECTURAL_BLUEPRINT_SVG } from '../utils/projectImages';
 import { TaskStatusChart } from '../components/dashboard/TaskStatusChart';
 
 export function ProjectDetails() {
@@ -132,11 +133,11 @@ export function ProjectDetails() {
         {/* Banner with Cover photo */}
         <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-[#202824]">
           <img
-            src={project.coverImage}
+            src={getProjectCoverImage(project)}
             alt={project.name}
             onError={(e) => {
               e.currentTarget.onerror = null;
-              e.currentTarget.src = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80';
+              e.currentTarget.src = ARCHITECTURAL_BLUEPRINT_SVG;
             }}
             className="w-full h-full object-cover opacity-60"
           />
