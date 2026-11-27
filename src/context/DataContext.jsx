@@ -78,6 +78,23 @@ export function DataProvider({ children }) {
     });
   }, [rawProjects, tasks]);
 
+  // Role-filtered project and task views
+  const visibleProjects = useMemo(() => {
+    if (!currentUser) return projects;
+    if (currentUser.role === 'super_admin' || currentUser.role === 'admin') {
+      return projects;
+    }
+    return projects.filter(p => p.team?.includes(currentUser.id) || p.manager === currentUser.name);
+  }, [projects, currentUser]);
+
+  const visibleTasks = useMemo(() => {
+    if (!currentUser) return tasks;
+    if (currentUser.role === 'super_admin' || currentUser.role === 'admin') {
+      return tasks;
+    }
+    return tasks.filter(t => t.assignedTo?.includes(currentUser.id));
+  }, [tasks, currentUser]);
+
   // Log activity helper
   const logActivity = useCallback((action, targetType, targetName, projectName, projectId) => {
     const act = {
@@ -247,6 +264,45 @@ export function DataProvider({ children }) {
     }
   }, [employees, showToast]);
 
+  // Milestone CRUD
+  const addMilestone = useCallback((m) => {
+    const newM = {
+      ...m,
+      id: 'ms-' + Date.now(),
+      status: m.status || 'Pending',
+      progress: m.progress || 0
+    };
+    setMilestones(prev => [newM, ...prev]);
+    showToast(`Milestone "${newM.name}" scheduled.`, 'success');
+    return newM;
+  }, [showToast]);
+
+  const updateMilestone = useCallback((id, fields) => {
+    setMilestones(prev => prev.map(m => m.id === id ? { ...m, ...fields } : m));
+    showToast('Milestone updated.', 'info');
+  }, [showToast]);
+
+  const deleteMilestone = useCallback((id) => {
+    setMilestones(prev => prev.filter(m => m.id !== id));
+    showToast('Milestone removed.', 'warning');
+  }, [showToast]);
+
+  // Blocker reporter
+  const reportTaskBlocker = useCallback((taskId, reason) => {
+    setTasks(prev => prev.map(t => {
+      if (t.id === taskId) {
+        return {
+          ...t,
+          status: 'Blocked',
+          blockerReason: reason
+        };
+      }
+      return t;
+    }));
+    logActivity('reported site blocker', 'task', reason, 'Field Issues', taskId);
+    showToast(`Site blocker flagged: ${reason}`, 'warning');
+  }, [logActivity, showToast]);
+
   // Notifications
   const markNotificationAsRead = useCallback((id) => {
     setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
@@ -272,27 +328,44 @@ export function DataProvider({ children }) {
   const value = {
     projects,
     rawProjects,
+    visibleProjects,
     tasks,
+    visibleTasks,
     milestones,
     employees,
     notifications,
     activities,
-    // Methods
+    // Project CRUD
     createProject,
+    addProject: createProject,
     updateProject,
     deleteProject,
+    // Task CRUD
     createTask,
+    addTask: createTask,
     updateTask,
     deleteTask,
     updateTaskStatus,
+    moveTaskStatus: updateTaskStatus,
     updateTaskProgress,
+    reportTaskBlocker,
     addComment,
+    addCommentToTask: addComment,
     addAttachment,
+    // Milestone CRUD
+    addMilestone,
+    updateMilestone,
+    deleteMilestone,
+    // Employee CRUD
     createEmployee,
+    addEmployee: createEmployee,
     updateEmployee,
     deleteEmployee,
+    // Notifications
     markNotificationAsRead,
+    markNotificationRead: markNotificationAsRead,
     markAllNotificationsAsRead,
+    markAllNotificationsRead: markAllNotificationsAsRead,
     resetToDefaults
   };
 

@@ -63,6 +63,14 @@ export function AuthProvider({ children }) {
   const isAdmin = currentUser?.role === 'admin' || isSuperAdmin;
   const isEmployee = currentUser?.role === 'employee';
 
+  // Permission flags used across pages
+  const canCreateProject = isSuperAdmin;
+  const canEditProject = isAdmin;
+  const canDeleteProject = isSuperAdmin;
+  const canCreateTask = isAdmin;
+  const canManageMilestones = isAdmin;
+  const canManageEmployees = isSuperAdmin;
+
   return (
     <AuthContext.Provider
       value={{
@@ -73,7 +81,13 @@ export function AuthProvider({ children }) {
         switchRole,
         isSuperAdmin,
         isAdmin,
-        isEmployee
+        isEmployee,
+        canCreateProject,
+        canEditProject,
+        canDeleteProject,
+        canCreateTask,
+        canManageMilestones,
+        canManageEmployees
       }}
     >
       {children}
