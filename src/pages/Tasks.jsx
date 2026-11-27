@@ -92,7 +92,7 @@ export function Tasks() {
           t.projectName.toLowerCase().includes(searchQuery.toLowerCase());
 
         const matchProject = projectFilter === 'All' || t.projectId === projectFilter;
-        const matchEmployee = employeeFilter === 'All' || t.assignedTo?.includes(employeeFilter);
+        const matchEmployee = employeeFilter === 'All' || (t.assignedTo || t.assigneeIds || [])?.includes(employeeFilter);
         const matchPriority = priorityFilter === 'All' || t.priority === priorityFilter;
         const matchStatus = statusFilter === 'All' || t.status === statusFilter;
 

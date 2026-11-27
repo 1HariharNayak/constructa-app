@@ -37,7 +37,24 @@ export function DataProvider({ children }) {
       coverImage: p.coverImage || getProjectCoverImage(p)
     }));
   });
-  const [tasks, setTasks] = useState(() => loadInitial('tasks', INITIAL_TASKS));
+  const [tasks, setTasks] = useState(() => {
+    const loaded = loadInitial('tasks', INITIAL_TASKS);
+    return loaded.map((t, idx) => {
+      const assignees = (Array.isArray(t.assignedTo) && t.assignedTo.length > 0)
+        ? t.assignedTo
+        : (Array.isArray(t.assigneeIds) && t.assigneeIds.length > 0)
+        ? t.assigneeIds
+        : [
+            INITIAL_EMPLOYEES[(idx + 1) % INITIAL_EMPLOYEES.length].id,
+            INITIAL_EMPLOYEES[(idx + 3) % INITIAL_EMPLOYEES.length].id
+          ];
+      return {
+        ...t,
+        assignedTo: assignees,
+        assigneeIds: assignees
+      };
+    });
+  });
   const [milestones, setMilestones] = useState(() => loadInitial('milestones', INITIAL_MILESTONES));
   const [employees, setEmployees] = useState(() => loadInitial('employees', INITIAL_EMPLOYEES));
   const [notifications, setNotifications] = useState(() => loadInitial('notifications', INITIAL_NOTIFICATIONS));
@@ -99,7 +116,7 @@ export function DataProvider({ children }) {
     if (currentUser.role === 'super_admin' || currentUser.role === 'admin') {
       return tasks;
     }
-    return tasks.filter(t => t.assignedTo?.includes(currentUser.id));
+    return tasks.filter(t => (t.assignedTo || t.assigneeIds || [])?.includes(currentUser.id));
   }, [tasks, currentUser]);
 
   // Log activity helper
@@ -157,8 +174,13 @@ export function DataProvider({ children }) {
   // Task CRUD
   const createTask = useCallback((taskData) => {
     const proj = projects.find(p => p.id === taskData.projectId);
+    const assignees = (taskData.assignedTo && taskData.assignedTo.length > 0)
+      ? taskData.assignedTo
+      : ['emp-1', 'emp-4'];
     const newTask = {
       ...taskData,
+      assignedTo: assignees,
+      assigneeIds: assignees,
       id: `TSK-${String(tasks.length + 1).padStart(3, '0')}`,
       projectName: proj ? proj.name : 'General Work',
       progress: taskData.progress || (taskData.status === 'Completed' ? 100 : 0),
