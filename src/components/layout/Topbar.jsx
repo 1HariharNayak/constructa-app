@@ -198,17 +198,23 @@ export function Topbar({ onToggleMobileSidebar, onOpenSearch, onOpenNewProject, 
           </button>
         </div>
 
-        {/* Dark / Light Theme Toggle */}
+        {/* Dark / Light Theme Toggle Pill */}
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-lg text-[#777F79] hover:text-[#242B27] hover:bg-[#F6F6F2] transition-colors cursor-pointer group"
-          aria-label={isDark ? "Switch to Architectural Light Mode" : "Switch to Slate Dark Mode"}
-          title={isDark ? "Switch to Light Theme (Shift+D)" : "Switch to Dark Theme (Shift+D)"}
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#E7E9E3] bg-[#F6F6F2] hover:bg-[#EBF0EC] text-xs font-semibold text-[#242B27] transition-all cursor-pointer shadow-2xs group"
+          aria-label={isDark ? "Switch to Architectural Light Mode" : "Switch to Blueprint Dark Mode"}
+          title="Click to toggle Dark/Light mode (Shortcut: Shift+D)"
         >
           {isDark ? (
-            <Sun className="w-4 h-4 text-[#C29567] transition-transform duration-300 group-hover:rotate-45" />
+            <>
+              <Sun className="w-3.5 h-3.5 text-[#C29567] transition-transform duration-300 group-hover:rotate-45" />
+              <span className="hidden sm:inline text-[#EDEDEA]">Light</span>
+            </>
           ) : (
-            <Moon className="w-4 h-4 text-[#657A6A] transition-transform duration-300 group-hover:-rotate-12" />
+            <>
+              <Moon className="w-3.5 h-3.5 text-[#657A6A] transition-transform duration-300 group-hover:-rotate-12" />
+              <span className="hidden sm:inline text-[#242B27]">Dark</span>
+            </>
           )}
         </button>
 
